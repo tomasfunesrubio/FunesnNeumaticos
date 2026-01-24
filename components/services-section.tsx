@@ -9,7 +9,7 @@ const services = [
     icon: Layers,
     title: "Precurado",
     description: "Reconstrucción certificada para transporte y carga. Máximo rendimiento kilométrico.",
-    href: "/productos/precurado",
+    href: "/precurado",
   },
   {
     id: "02",
