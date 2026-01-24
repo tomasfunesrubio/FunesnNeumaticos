@@ -70,6 +70,8 @@ export function ContactSection() {
     mensaje: "",
   })
 
+  const [isMapLoaded, setIsMapLoaded] = useState(false)
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
@@ -147,21 +149,25 @@ export function ContactSection() {
           </div>
 
           <div className="w-full h-[500px] border border-border shadow-2xl bg-secondary/20 relative group overflow-hidden">
+            {/* Skeleton Loader */}
+            {!isMapLoaded && (
+              <div className="absolute inset-0 bg-zinc-100 animate-pulse z-20 flex items-center justify-center">
+                <span className="text-zinc-400 font-bold text-sm uppercase tracking-widest">Cargando Mapa...</span>
+              </div>
+            )}
+
             <iframe
-              src="https://maps.google.com/maps?q=Funes+Neumaticos+RN34+720+La+Banda+Santiago+del+Estero&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Funes+Neumaticos+RN34+720+La+Banda&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
+              onLoad={() => setIsMapLoaded(true)}
+              className={`transition-opacity duration-700 ${isMapLoaded ? 'opacity-100' : 'opacity-0'}`}
               title="Ubicación Funes Neumáticos"
             ></iframe>
-
-            <div className="absolute top-4 right-4 bg-black/80 text-primary px-4 py-2 text-xs font-bold uppercase tracking-widest border border-primary/30 backdrop-blur-md pointer-events-none">
-              Ubicación Satelital
-            </div>
           </div>
         </div>
 

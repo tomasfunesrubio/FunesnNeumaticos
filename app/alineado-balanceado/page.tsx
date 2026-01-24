@@ -42,7 +42,7 @@ export default function AlineadoPage() {
                             </span>
                         </div>
 
-                        <h1 className="text-5xl font-black tracking-tight sm:text-7xl text-white mb-8 uppercase leading-[0.9]">
+                        <h1 className="text-3xl font-black tracking-tight sm:text-5xl lg:text-7xl text-white mb-8 uppercase leading-tight sm:leading-[0.9]">
                             Alineación y <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-600">
                                 Balanceo Computarizado

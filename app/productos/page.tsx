@@ -17,7 +17,8 @@ import {
   Zap,
   Shield,
   Leaf,
-  Factory
+  Factory,
+  Package
 } from "lucide-react"
 
 // --- COMPONENTE DE HUELLA DE NEUMÁTICO (SVG CUSTOM) ---
@@ -49,52 +50,68 @@ function TireTrackPattern(props: React.SVGProps<SVGSVGElement>) {
 
 const services = [
   {
-    icon: RefreshCw,
-    title: "Recapado en frío",
-    description: "Proceso de recapado que utiliza bandas de rodamiento precuradas aplicadas mediante adhesivos especiales y vulcanización a baja temperatura.",
-    features: [
-      "Ideal para neumáticos de alta gama",
-      "Mayor vida útil de la carcasa",
-      "Menor consumo energético",
-      "Acabado premium",
-    ],
-    badge: null,
+    icon: RefreshCw, // Or Layers
+    title: "Recapado y Precurado",
+    description: "Reconstrucción certificada para transporte y carga. Máximo rendimiento kilométrico con bandas precuradas.",
+    features: ["Bandas de alto rendimiento", "Proceso en frío", "Garantía de casco", "Ahorro de combustible"],
+    href: "/precurado",
+    badge: "Transporte",
+  },
+  {
+    icon: Factory, // Or Tractor icon if avail
+    title: "Retacado Agrícola",
+    description: "Recuperación de tacos y tracción para maquinaria agrícola. Solución robusta para el trabajo de campo.",
+    features: ["Recuperación de tracción", "Vulcanización profunda", "Tractores y Cosechadoras", "Alta resistencia"],
+    href: "/retacado",
+    badge: "Agro",
   },
   {
     icon: Settings,
-    title: "Recapado en caliente",
-    description: "Método tradicional donde se aplica caucho crudo que se vulcaniza a alta temperatura, creando una unión molecular perfecta con la carcasa.",
-    features: [
-      "Máxima durabilidad",
-      "Ideal para uso severo",
-      "Rendimiento comprobado",
-      "Costo-beneficio óptimo",
-    ],
-    badge: null,
+    title: "Recauchutaje",
+    description: "Renovación integral tradicional (En Caliente) para devolver la vida útil al neumático en condiciones severas.",
+    features: ["Matricería propia", "Fusión molecular", "Ideal Off-Road", "Máxima durabilidad"],
+    href: "/recauchutaje",
+    badge: "Industrial",
   },
   {
-    icon: Truck,
-    title: "Neumáticos nuevos",
-    description: "Amplio catálogo de neumáticos nuevos de las mejores marcas nacionales e internacionales para todo tipo de vehículos.",
-    features: [
-      "Marcas premium",
-      "Garantía de fábrica",
-      "Asesoramiento especializado",
-      "Precios competitivos",
-    ],
-    badge: null,
+    icon: Zap, // Or Flame
+    title: "Vulcanizado",
+    description: "Reparación técnica de cortes y secciones. Recuperamos neumáticos que otros descartan.",
+    features: ["Parches con refuerzo", "Reparación seccional", "Control de rayos X", "Seguridad garantizada"],
+    href: "/vulcanizado",
+    badge: "Técnico",
+  },
+  {
+    icon: Shield,
+    title: "Refuerzo Interno",
+    description: "Soluciones estructurales para recuperar carcasas fatigadas y extender su ciclo de vida.",
+    features: ["Refuerzo de hombros", "Talones reforzados", "Análisis de estructura", "Prevención de fallas"],
+    href: "/refuerzo-interno",
+    badge: "Especial",
+  },
+  {
+    icon: Truck, // Or Disc icon
+    title: "Alineación 3D",
+    description: "Precisión láser para camiones y livianos. Ahorrá combustible y cuidá tus cubiertas.",
+    features: ["Tecnología 3D", "Balanceo dinámico", "Corrección de comba", "Informe digital"],
+    href: "/alineado-balanceado",
+    badge: "Taller",
   },
   {
     icon: Wrench,
-    title: "Reparación Integral",
-    description: "Servicios de reparación, parches, balanceo y alineación para extender la vida útil de tus neumáticos y optimizar el rendimiento.",
-    features: [
-      "Reparación de pinchazos",
-      "Balanceo y alineación",
-      "Inspección técnica",
-      "Rotación de neumáticos",
-    ],
-    badge: null,
+    title: "Tren Delantero",
+    description: "Diagnóstico y reparación integral de suspensión, frenos y dirección para tu seguridad.",
+    features: ["Cambio de bujes", "Extremos de dirección", "Amortiguación", "Frenos"],
+    href: "/tren-delantero",
+    badge: "Mecánica",
+  },
+  {
+    icon: Package, // Import Package from lucide-react
+    title: "Neumáticos Nuevos",
+    description: "Venta directa de las mejores marcas nacionales e internacionales para renovar tu flota.",
+    features: ["Michelin / Fate / Bridgestone", "Todas las medidas", "Stock permanente", "Envíos a todo el país"],
+    href: "/cubiertas-nuevas",
+    badge: "Venta",
   },
 ]
 
@@ -143,23 +160,23 @@ export default function ProductosPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Header />
-      
+
       {/* --- HERO SECTION INDUSTRIAL (Fondo Claro con Huella) --- */}
       <section className="pt-40 pb-20 bg-white relative border-b border-zinc-200 overflow-hidden">
-        
+
         {/* Grilla Técnica Sutil */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:40px_40px] z-0 pointer-events-none"></div>
-        
+
         {/* HUELLA DE NEUMÁTICO (TRACK) EN EL FONDO */}
         {/* CAMBIO: Usamos 'text-primary' para el color dorado y ajustamos opacidad */}
         <div className="absolute top-0 right-10 h-[150%] -translate-y-20 rotate-12 opacity-[0.15] pointer-events-none z-0">
-            <TireTrackPattern className="h-full w-[200px] text-primary" />
+          <TireTrackPattern className="h-full w-[200px] text-primary" />
         </div>
-        
+
         {/* Una segunda huella más fina para acompañar */}
         {/* CAMBIO: Usamos 'text-primary' también aquí */}
         <div className="absolute top-20 right-[300px] h-[120%] rotate-12 opacity-[0.08] pointer-events-none z-0 hidden lg:block">
-            <TireTrackPattern className="h-full w-[140px] text-primary" />
+          <TireTrackPattern className="h-full w-[140px] text-primary" />
         </div>
 
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
@@ -171,14 +188,14 @@ export default function ProductosPage() {
                 Catálogo Técnico
               </span>
             </div>
-            
+
             <h1 className="text-5xl font-black tracking-tight sm:text-7xl text-zinc-900 mb-6 uppercase">
-              Soluciones <br/> 
+              Soluciones <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-600">
                 Integrales
               </span>
             </h1>
-            
+
             <p className="text-xl text-zinc-500 leading-relaxed max-w-2xl border-l-4 border-primary pl-6 py-2">
               Gama completa de servicios de recapado y productos para mantener tu flota rodando con máxima eficiencia.
             </p>
@@ -225,7 +242,7 @@ export default function ProductosPage() {
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <Card key={service.title} className="h-full flex flex-col bg-white border-2 border-zinc-200 hover:border-primary transition-all duration-300 group rounded-none overflow-hidden relative shadow-sm hover:shadow-lg">
-                
+
                 <span className="absolute top-0 right-0 p-4 text-6xl font-black text-zinc-100 group-hover:text-primary/10 transition-colors pointer-events-none">
                   0{index + 1}
                 </span>
@@ -250,7 +267,7 @@ export default function ProductosPage() {
                   <p className="text-zinc-500 leading-relaxed mb-6 border-l-2 border-zinc-200 pl-4">
                     {service.description}
                   </p>
-                  
+
                   <div className="bg-zinc-50 p-4 border border-zinc-100 mb-8">
                     <ul className="space-y-3">
                       {service.features.map((feature) => (
@@ -263,9 +280,9 @@ export default function ProductosPage() {
                   </div>
 
                   <div className="mt-auto">
-                    <Link href="/contacto" className="inline-block w-full">
+                    <Link href={service.href} className="inline-block w-full">
                       <Button variant="outline" className="w-full border-zinc-900 text-zinc-900 hover:bg-primary hover:text-black hover:border-primary bg-transparent rounded-none h-12 uppercase font-bold tracking-widest transition-all">
-                        Consultar Servicio
+                        Ver Detalle
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
@@ -277,86 +294,43 @@ export default function ProductosPage() {
         </div>
       </section>
 
-      {/* --- PRODUCT CATEGORIES --- */}
-      <section className="py-24 bg-white border-y border-zinc-200">
+      {/* --- KEY SPECS STRIP --- */}
+      <section className="py-12 bg-primary text-black border-y border-yellow-500">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8 text-center divide-x divide-black/10">
+            <div className="font-black uppercase tracking-widest text-lg sm:text-xl">TECNOlOGÍA DE PUNTA</div>
+            <div className="font-black uppercase tracking-widest text-lg sm:text-xl">GARANTÍA DE CALIDAD</div>
+            <div className="font-black uppercase tracking-widest text-lg sm:text-xl">ATENCIÓN A FLOTAS</div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- BRANDS & PARTNERS (Replaces Categories) --- */}
+      <section className="py-24 bg-white border-b border-zinc-200">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h2 className="text-3xl font-black text-zinc-900 sm:text-4xl uppercase">
-              Categorías de Productos
+              Marcas que Trabajamos
             </h2>
             <div className="h-1 w-20 bg-primary mx-auto mt-4"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {productCategories.map((category) => (
-              <div 
-                key={category.title} 
-                className="group p-6 bg-zinc-50 border-2 border-zinc-100 hover:border-primary transition-all hover:-translate-y-1 duration-300 shadow-sm"
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {["MICHELIN", "BRIDGESTONE", "FATE", "PIRELLI", "GOODYEAR", "CONTINENTAL"].map((brand) => (
+              <div
+                key={brand}
+                className="aspect-[3/2] flex items-center justify-center bg-zinc-100 border-2 border-transparent hover:border-primary transition-all duration-300 group cursor-default"
               >
-                <div className="flex items-center gap-2 mb-4 text-primary">
-                   <Factory className="h-5 w-5" />
-                   <span className="text-xs font-mono uppercase text-zinc-500">Stock Disponible</span>
-                </div>
-                <h3 className="font-bold text-zinc-900 text-lg uppercase mb-2">{category.title}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed mb-6 h-12">{category.description}</p>
-                
-                <div className="pt-4 border-t border-zinc-200">
-                  <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-3 font-bold">Medidas Comunes:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {category.sizes.map((size) => (
-                      <span key={size} className="px-2 py-1 bg-white text-zinc-600 text-xs font-mono border border-zinc-200 group-hover:border-zinc-400 transition-colors">
-                        {size}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <span className="text-zinc-400 font-black text-sm uppercase tracking-widest group-hover:text-zinc-900 transition-colors">
+                  {brand}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- PROCESS SECTION --- */}
-      <section className="py-24 bg-zinc-50 text-zinc-900">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <h2 className="text-3xl font-black text-zinc-900 sm:text-4xl uppercase">
-              Línea de Producción
-            </h2>
-            <p className="mt-4 text-lg text-zinc-500">
-              Proceso estandarizado de reconstrucción
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-5 gap-8">
-            {[
-              { step: "01", title: "Recepción", desc: "Inspección técnica de casco" },
-              { step: "02", title: "Raspado", desc: "Remoción de caucho remanente" },
-              { step: "03", title: "Preparación", desc: "Reparación y cementado" },
-              { step: "04", title: "Vulcanizado", desc: "Fusión molecular (Autoclave)" },
-              { step: "05", title: "Control Final", desc: "Verificación de calidad" },
-            ].map((item, index) => (
-              <div key={item.step} className="relative group">
-                {/* Conector de línea */}
-                {index < 4 && (
-                  <div className="hidden md:block absolute top-8 left-1/2 w-full h-1 bg-zinc-200 -z-10">
-                    <div className="h-full bg-primary w-0 group-hover:w-full transition-all duration-700 ease-out delay-100"></div>
-                  </div>
-                )}
-                
-                <div className="flex flex-col items-center text-center relative z-10">
-                  {/* Círculo */}
-                  <div className="h-16 w-16 flex items-center justify-center bg-white border-4 border-zinc-900 text-zinc-900 font-black text-xl group-hover:border-primary group-hover:bg-primary group-hover:text-black transition-all duration-300 shadow-sm rounded-full">
-                    {item.step}
-                  </div>
-                  <h3 className="mt-6 font-bold text-zinc-900 uppercase tracking-wider">{item.title}</h3>
-                  <p className="mt-2 text-xs text-zinc-500 uppercase font-mono">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <CTASection />
       <Footer />

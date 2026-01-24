@@ -19,8 +19,8 @@ import {
 // --- TARJETA DE PRODUCTO (Vulcanizado) ---
 function ProductCard({ product }: { product: VulcanizadoProduct }) {
     return (
-        <Link href={`/vulcanizado/${product.id}`} className="block">
-            <div className="group relative bg-white border border-zinc-200 hover:border-primary transition-all duration-300 flex flex-col overflow-hidden hover:shadow-xl hover:-translate-y-1 cursor-pointer">
+        <Link href={`/vulcanizado/${product.id}`} className="block h-full">
+            <div className="group relative bg-white border border-zinc-200 hover:border-primary transition-all duration-300 flex flex-col h-full overflow-hidden hover:shadow-xl hover:-translate-y-1 cursor-pointer">
                 <div className="absolute top-0 left-0 z-20 bg-zinc-900 text-white px-3 py-1 text-[10px] font-mono uppercase tracking-widest border-b border-r border-zinc-800">
                     Servicio Técnico
                 </div>
@@ -37,7 +37,7 @@ function ProductCard({ product }: { product: VulcanizadoProduct }) {
                     <div className="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-lg font-black text-zinc-900 uppercase leading-tight mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-black text-zinc-900 uppercase leading-tight mb-2 group-hover:text-primary transition-colors min-h-[3.5rem]">
                         {product.name}
                     </h3>
                     <div className="mt-auto pt-4 border-t border-dashed border-zinc-200 grid grid-cols-2 gap-2 text-xs text-zinc-500 font-mono">

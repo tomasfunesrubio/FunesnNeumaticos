@@ -1,6 +1,6 @@
 const stats = [
   { value: "20+", label: "Años de experiencia" },
-  { value: "50K+", label: "Neumáticos recapados" },
+  { value: "50K+", label: "Neumáticos restaurados" },
   { value: "500+", label: "Clientes satisfechos" },
   { value: "50%", label: "Ahorro promedio" },
 ]

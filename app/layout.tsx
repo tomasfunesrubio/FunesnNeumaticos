@@ -8,27 +8,14 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Funes Neumáticos | Recapado Profesional de Neumáticos',
+  title: 'Funes Neumáticos | Soluciones Profesionales para tus Neumáticos',
   description: 'Especialistas en recapado de neumáticos. Calidad, durabilidad y confianza para tu flota. Más de 20 años de experiencia en el sector.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/rueda-camion.png',
+    apple: '/rueda-camion.png',
   },
-}
+};
 
 export default function RootLayout({
   children,
