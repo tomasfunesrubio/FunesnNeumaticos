@@ -124,7 +124,7 @@ export function Hero() {
         </div>
 
         {/* --- VIPAL FLOATING CARD (Right Side) --- */}
-        <div className="w-full lg:flex-1 relative lg:h-full lg:min-h-[400px] pointer-events-none mt-12 lg:mt-0">
+        <div className="w-full flex justify-center lg:block lg:flex-1 relative lg:h-full lg:min-h-[400px] pointer-events-none mt-12 lg:mt-0">
           <div className="pointer-events-auto lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2">
 
             {/* Card Container: Industrial Glass Effect */}
