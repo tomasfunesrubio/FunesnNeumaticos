@@ -15,7 +15,7 @@ const backgroundImages = [
 
 const stats = [
   { label: "Trayectoria", value: "+20 Años", icon: Award },
-  { label: "Calidad", value: "Certificada", icon: Shield },
+  { label: "Calidad", value: "ISO 9001", icon: Shield },
   { label: "Servicio", value: "Integral", icon: Clock },
 ]
 

@@ -299,7 +299,7 @@ export default function ProductosPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 text-center divide-x divide-black/10">
             <div className="font-black uppercase tracking-widest text-lg sm:text-xl">TECNOlOGÍA DE PUNTA</div>
-            <div className="font-black uppercase tracking-widest text-lg sm:text-xl">GARANTÍA DE CALIDAD</div>
+            <div className="font-black uppercase tracking-widest text-lg sm:text-xl">CALIDAD ISO 9001</div>
             <div className="font-black uppercase tracking-widest text-lg sm:text-xl">ATENCIÓN A FLOTAS</div>
           </div>
         </div>

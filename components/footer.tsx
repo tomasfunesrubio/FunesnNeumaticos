@@ -94,11 +94,11 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
-                <span>+54 11 1234-5678</span>
+                <span>(0385) 427-6652</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary shrink-0" />
-                <span>info@funesneumaticos.com</span>
+                <span>ventas@funesneumaticos.com</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-0.5 shrink-0" />

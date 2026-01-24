@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { MessageCircle } from "lucide-react"
 import {
   Phone,
   Mail,
@@ -37,26 +38,30 @@ function TireTrackPattern(props: React.SVGProps<SVGSVGElement>) {
 const contactInfo = [
   {
     icon: Phone,
-    title: "Teléfono",
-    details: ["+54 11 1234-5678", "+54 11 8765-4321"],
-    action: "tel:+5411123456789",
+    title: "Teléfonos",
+    details: [
+      "Fijo: (0385) 427-6652",
+      "Móvil: 0385 154-135265",
+      "WhatsApp: 385 698 1610"
+    ],
+    action: "tel:03854276652",
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@funesneumaticos.com", "ventas@funesneumaticos.com"],
-    action: "mailto:info@funesneumaticos.com",
+    details: ["ventas@funesneumaticos.com", "funesneumaticos@hotmail.com"],
+    action: "mailto:ventas@funesneumaticos.com",
   },
   {
     icon: MapPin,
-    title: "Dirección",
+    title: "Ubicación",
     details: ["RN34 720, La Banda", "Santiago del Estero"],
     action: "#ubicacion",
   },
   {
     icon: Clock,
     title: "Horarios",
-    details: ["Lun - Vie: 8:00 - 18:00", "Sáb: 8:00 - 13:00"],
+    details: ["Lun a Vie: 7 a 13 hs", "y 14 a 17 hs"],
     action: null,
   },
 ]
@@ -131,9 +136,25 @@ export function ContactSection() {
               </div>
               <h3 className="font-bold text-foreground uppercase text-xs tracking-wider mb-2">{info.title}</h3>
               <div className="space-y-1">
-                {info.details.map((detail) => (
-                  <p key={detail} className="text-sm text-muted-foreground font-medium">{detail}</p>
-                ))}
+                {info.details.map((detail) => {
+                  if (detail.includes("WhatsApp")) {
+                    return (
+                      <a
+                        key={detail}
+                        href="https://wa.me/5493856981610"
+                        className="flex items-center gap-2 text-primary font-bold hover:text-primary/80 transition-colors mt-1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <MessageCircle className="h-3 w-3" />
+                        {detail}
+                      </a>
+                    )
+                  }
+                  return (
+                    <p key={detail} className="text-sm text-muted-foreground font-medium">{detail}</p>
+                  )
+                })}
               </div>
             </div>
           ))}

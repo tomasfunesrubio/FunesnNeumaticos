@@ -58,7 +58,7 @@ const milestones = [
 const benefits = [
   "Tecnología de última generación",
   "Personal altamente capacitado",
-  "Procesos certificados ISO",
+  "Procesos certificados ISO 9001",
   "Atención personalizada",
   "Compromiso ambiental",
   "Precios competitivos",
@@ -193,7 +193,6 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
-      <VipalSection />
 
       {/* --- TIMELINE SECTION --- */}
       <section className="py-24 bg-background relative overflow-hidden">
@@ -257,7 +256,7 @@ export default function NosotrosPage() {
               />
               <div className="relative z-10 text-center p-8 bg-black/40 backdrop-blur-sm border border-white/10 m-8">
                 <div className="text-4xl font-black uppercase text-white mb-2">
-                  Calidad <br /> Garantizada
+                  Calidad <br /> ISO 9001
                 </div>
                 <div className="h-1 w-12 bg-primary mx-auto"></div>
               </div>
@@ -286,6 +285,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
+      <VipalSection />
 
       <CTASection />
       <Footer />

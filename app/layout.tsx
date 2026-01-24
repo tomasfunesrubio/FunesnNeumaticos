@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   description: 'Especialistas en recapado de neumáticos. Calidad, durabilidad y confianza para tu flota. Más de 20 años de experiencia en el sector.',
   generator: 'v0.app',
   icons: {
-    icon: '/rueda-camion.png',
-    apple: '/rueda-camion.png',
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
 };
 

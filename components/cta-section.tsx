@@ -1,62 +1,89 @@
-import Link from "next/link"
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { ArrowRight, MessageSquare } from "lucide-react"
+import { CheckCircle2, MapPin, MessageCircle } from "lucide-react"
 
 export function CTASection() {
   return (
-    <section className="py-24 bg-background border-t border-border">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        
-        {/* Contenedor estilo "Bloque Industrial" */}
-        <div className="relative bg-zinc-900 overflow-hidden px-8 py-16 lg:px-16 lg:py-20 border-l-8 border-primary shadow-2xl rounded-none">
-          
-          {/* Fondo: Grilla técnica sutil para textura */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:30px_30px] opacity-20 pointer-events-none"></div>
-          
-          {/* Decoración mecánica en la esquina */}
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-             <div className="h-20 w-20 border-t-4 border-r-4 border-white"></div>
+    <section className="py-24 bg-zinc-950 relative overflow-hidden border-t border-zinc-900">
+      {/* Background Texture: Dotted Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
+
+      {/* Radial Gradient for Depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(234,179,8,0.05),transparent_70%)] pointer-events-none"></div>
+
+      <div className="mx-auto max-w-5xl px-6 lg:px-8 relative z-10 text-center">
+
+        {/* HUD Container with Corner Brackets */}
+        <div className="relative p-8 sm:p-12">
+          {/* Top Left */}
+          <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-primary/50"></div>
+          {/* Top Right */}
+          <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-primary/50"></div>
+          {/* Bottom Left */}
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-primary/50"></div>
+          {/* Bottom Right */}
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-primary/50"></div>
+
+          {/* Eyebrow */}
+          <div className="mb-6 animate-fade-in-up">
+            <span className="text-primary font-bold tracking-[0.2em] text-sm uppercase font-mono">
+                // MANTENIMIENTO INTEGRAL
+            </span>
           </div>
 
-          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
-            
-            {/* Texto de alto impacto */}
-            <div className="max-w-2xl text-left">
-              <div className="flex items-center gap-2 mb-4 text-primary/80">
-                <MessageSquare className="h-5 w-5" />
-                <span className="text-xs font-mono uppercase tracking-widest">Atención Inmediata</span>
-              </div>
-              
-              <h2 className="text-3xl font-black text-white sm:text-5xl uppercase tracking-tight mb-6">
-                ¿Tu flota necesita <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-600">
-                  Optimización?
-                </span>
-              </h2>
-              
-              <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
-                No pierdas más dinero en neumáticos. Solicitá hoy mismo un diagnóstico técnico gratuito y descubrí cuánto podés ahorrar con nuestro sistema de recapado.
-              </p>
-            </div>
-            
-            {/* Botones Industriales */}
-            <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full lg:w-auto">
-              <Link href="/contacto">
-                <Button size="lg" className="w-full sm:w-auto bg-primary text-black hover:bg-white hover:text-black font-black uppercase tracking-wider rounded-none h-16 px-10 text-base border-2 border-transparent hover:border-primary transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)]">
-                  Solicitar Cotización
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              
-              <Link href="/nosotros">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto border-2 border-white/20 text-white hover:bg-white hover:text-black bg-transparent uppercase tracking-wider rounded-none h-16 px-8 text-base font-bold transition-all">
-                  Conocer la Planta
-                </Button>
-              </Link>
-            </div>
+          {/* Title */}
+          <h2 className="text-4xl sm:text-6xl font-black text-white uppercase tracking-tight mb-6 leading-tight">
+            SOLUCIONES DE <br className="hidden sm:block" />
+            ALTO RENDIMIENTO <br />
+            <span className="text-primary">
+              PARA TU FLOTA
+            </span>
+          </h2>
 
+          {/* Description */}
+          <p className="text-xl text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-12 font-light">
+            Maximizá la rentabilidad de cada kilómetro. Mantenimiento preventivo y correctivo con estándares industriales.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+            <a
+              href="https://wa.me/5493855711696?text=Hola%20Funes,%20necesito%20asesoramiento%20t%C3%A9cnico%20para%20mi%20flota."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button size="lg" className="w-full h-16 px-10 bg-primary text-black hover:bg-primary/90 font-black uppercase tracking-wider rounded-none text-base shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_50px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1">
+                <MessageCircle className="mr-3 h-5 w-5" />
+                Asesoría Inmediata
+              </Button>
+            </a>
+
+            <a
+              href="https://www.google.com/maps?q=Funes+Neumaticos,+RN34+720,+La+Banda,+Santiago+del+Estero"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button size="lg" variant="ghost" className="w-full h-16 px-10 text-zinc-400 hover:text-white hover:bg-white/5 border-2 border-zinc-800 hover:border-white/20 font-bold uppercase tracking-wider rounded-none text-base transition-all">
+                <MapPin className="mr-3 h-5 w-5" />
+                Ver Ubicación
+              </Button>
+            </a>
+          </div>
+
+          {/* Features Strip */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 border-t border-white/5 pt-10">
+            {["Atención Inmediata", "Presupuesto Sin Cargo", "Garantía Escrita"].map((feature) => (
+              <div key={feature} className="flex items-center gap-3">
+                <CheckCircle2 className="h-5 w-5 text-primary" />
+                <span className="text-zinc-300 font-medium uppercase tracking-wide text-sm">{feature}</span>
+              </div>
+            ))}
           </div>
         </div>
+
       </div>
     </section>
   )
