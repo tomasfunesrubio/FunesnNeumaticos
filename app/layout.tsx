@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Funes Neumáticos | Ingeniería en Transporte y Recapado VIPAL',
-  description: 'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas: Recapado premium, mecánica ligera, tren delantero y alineación 3D. Maximizamos tu rendimiento kilométrico.',
+  title: 'Funes Neumáticos | Ingeniería en Transporte',
+  description: 'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas: Precurado premium, mecánica ligera, tren delantero y alineación 3D. Maximizamos tu rendimiento kilométrico.',
   generator: 'v0.app',
   icons: {
     icon: '/logo.png',

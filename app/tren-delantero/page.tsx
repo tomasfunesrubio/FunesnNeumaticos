@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import {
@@ -27,8 +28,16 @@ export default function TrenDelanteroPage() {
 
             {/* --- HERO SECTION --- */}
             <section className="pt-32 pb-20 bg-zinc-950 text-white relative border-b border-zinc-800 overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,#ffffff05_1px,transparent_1px),linear-gradient(-45deg,#ffffff05_1px,transparent_1px)] bg-[size:30px_30px] z-0 pointer-events-none"></div>
-                <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-gradient-radial from-yellow-500/5 via-transparent to-transparent blur-3xl z-0 pointer-events-none"></div>
+                <Image
+                    src="/fondo-1-tren.jpg"
+                    alt="Reparación de tren delantero de camión pesado en taller"
+                    fill
+                    className="object-cover object-center opacity-90"
+                    priority
+                />
+
+                {/* Gradient Overlay for Readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-transparent z-10"></div>
 
                 <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl">

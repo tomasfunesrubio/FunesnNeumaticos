@@ -27,11 +27,16 @@ export default function AlineadoPage() {
 
             {/* --- HERO SECTION --- */}
             <section className="pt-32 pb-20 bg-zinc-950 text-white relative border-b border-zinc-800 overflow-hidden">
-                {/* Technical Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] z-0 pointer-events-none"></div>
+                <Image
+                    src="/fondo-alineacion-balanceo.jpeg"
+                    alt="Taller de alineación 3D para camiones pesados"
+                    fill
+                    className="object-cover object-center opacity-90"
+                    priority
+                />
 
-                {/* Gold Glow Effect */}
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-yellow-500/10 via-yellow-600/5 to-transparent blur-3xl z-0 pointer-events-none"></div>
+                {/* Gradient Overlay for Readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent z-0"></div>
 
                 <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl">

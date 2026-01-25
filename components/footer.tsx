@@ -21,7 +21,7 @@ export function Footer() {
               />
             </Link>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Más de 20 años brindando soluciones de calidad en recapado y venta de neumáticos para flotas de transporte.
+              Líderes en innovación para el transporte y el campo. Somos la <strong>única planta de reconstrucción de Neumáticos Agrícolas</strong> en Santiago del Estero, respaldados por tecnología VIPAL y certificación ISO 9001.
             </p>
             <div className="flex gap-4 mt-6">
               {/* Social placeholders could go here if needed, keeping simple for now */}

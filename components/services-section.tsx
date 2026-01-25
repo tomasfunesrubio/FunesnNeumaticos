@@ -138,7 +138,7 @@ export function ServicesSection() {
 
                   {/* Footer de la tarjeta (Decorativo técnico) */}
                   <div className="mt-8 pt-4 border-t border-dashed border-border flex items-center justify-between text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors">
-                    <span>VER DETALLE</span>
+                    <span>VER CATÁLOGO</span>
                     <ArrowUpRight className="h-4 w-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </div>
 
