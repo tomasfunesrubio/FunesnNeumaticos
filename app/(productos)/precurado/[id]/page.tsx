@@ -29,7 +29,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <section className="pt-32 pb-8 bg-background border-b border-border">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <Link
-                        href="/productos/precurado"
+                        href="/precurado"
                         className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors group"
                     >
                         <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
