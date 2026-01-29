@@ -151,14 +151,7 @@ export default function ContactoPage() {
 
           {/* 1. INFORMACIÓN PLANTA CENTRAL (ANCHO COMPLETO) */}
           <div className="w-full mb-16">
-            {/* CORRECCIÓN: Trigger agresivo (amount: 0.1) para que cargue PRIMERO */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5 }}
-              className="border-b border-border pb-8 mb-10"
-            >
+            <div className="border-b border-border pb-8 mb-10">
               <h3 className="text-3xl font-black text-foreground mb-4 uppercase flex items-center gap-3">
                 <Factory className="h-8 w-8 text-primary" />
                 Planta Central
@@ -166,7 +159,7 @@ export default function ContactoPage() {
               <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
                 Nuestras instalaciones están operativas de Lunes a Sábados para recepción y despacho de flotas. Contactanos por cualquiera de nuestros canales oficiales.
               </p>
-            </motion.div>
+            </div>
 
             <motion.div
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
