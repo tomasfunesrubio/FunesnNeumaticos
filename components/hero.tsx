@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Shield, Clock, Award, Star, MapPin } from "lucide-react"
 
@@ -63,29 +64,49 @@ export function Hero() {
         <div className="flex-1 max-w-3xl">
 
           {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6 animate-fade-in-up">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex items-center gap-3 mb-6"
+          >
             <div className="h-1 w-12 bg-primary"></div>
             <span className="text-primary font-bold tracking-[0.2em] text-sm uppercase font-mono">
               // Ingeniería en Transporte
             </span>
-          </div>
+          </motion.div>
 
           {/* TÍTULO: EQUILIBRADO (Ni muy corto, ni muy largo) */}
           {/* Ajusté el tamaño a text-7xl para que las 3-4 palabras entren perfectas */}
-          <h1 className="text-5xl font-black tracking-tight text-white sm:text-7xl mb-6 leading-[0.95] uppercase">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="text-5xl font-black tracking-tight text-white sm:text-7xl mb-6 leading-[0.95] uppercase"
+          >
             Precurado y <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-yellow-600">
               Servicios Integrales
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Descripción */}
-          <p className="text-xl text-gray-300 leading-relaxed mb-10 max-w-xl border-l-4 border-primary pl-6 py-1">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            className="text-xl text-gray-300 leading-relaxed mb-10 max-w-xl border-l-4 border-primary pl-6 py-1"
+          >
             Reconstrucción de neumáticos con tecnología premium y mecánica especializada para maximizar el rendimiento de tu flota.
-          </p>
+          </motion.p>
 
           {/* Botones */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 mb-16"
+          >
             <a
               href="https://wa.me/543856981610?text=Hola%20Funes%20Neumáticos,%20quisiera%20solicitar%20una%20cotización."
               target="_blank"
@@ -101,10 +122,15 @@ export function Hero() {
                 Ver Catálogo
               </Button>
             </Link>
-          </div>
+          </motion.div>
 
           {/* --- SPECS PANEL --- */}
-          <div className="w-[90%] bg-zinc-950/80 backdrop-blur-md border border-white/10 border-l-4 border-l-primary p-0 rounded-none">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+            className="w-[90%] bg-zinc-950/80 backdrop-blur-md border border-white/10 border-l-4 border-l-primary p-0 rounded-none"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col p-6 hover:bg-white/5 transition-colors cursor-default group">
@@ -120,7 +146,7 @@ export function Hero() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* --- VIPAL FLOATING CARD (Right Side) --- */}
@@ -128,52 +154,71 @@ export function Hero() {
           <div className="pointer-events-auto lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2">
 
             {/* Card Container: Industrial Glass Effect */}
-            <div className="w-[280px] bg-zinc-950/40 backdrop-blur-xl border border-yellow-500/30 rounded-2xl p-5 shadow-[0_0_50px_-10px_rgba(234,179,8,0.2)] hover:scale-[1.02] transition-transform duration-500 group">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                y: [0, -10, 0] // Floating effect
+              }}
+              transition={{
+                opacity: { duration: 0.8, ease: "easeOut", delay: 1.0 },
+                x: { duration: 0.8, ease: "easeOut", delay: 1.0 },
+                y: {
+                  repeat: Infinity,
+                  duration: 6,
+                  ease: "easeInOut",
+                  delay: 1.0 // Start floating after entrance
+                }
+              }}
+            >
+              <div className="w-[280px] bg-zinc-950/40 backdrop-blur-xl border border-yellow-500/30 rounded-2xl p-5 shadow-[0_0_50px_-10px_rgba(234,179,8,0.2)] hover:scale-[1.02] transition-transform duration-500 group">
 
-              {/* Decorative Glow */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/10 blur-[60px] rounded-full pointer-events-none"></div>
+                {/* Decorative Glow */}
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/10 blur-[60px] rounded-full pointer-events-none"></div>
 
-              {/* Header: Certification Badge */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="bg-yellow-500/20 p-1.5 rounded-md">
-                    <Award className="h-4 w-4 text-yellow-500" />
+                {/* Header: Certification Badge */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="bg-yellow-500/20 p-1.5 rounded-md">
+                      <Award className="h-4 w-4 text-yellow-500" />
+                    </div>
+                    <span className="text-[10px] font-bold text-yellow-500 tracking-[0.2em] uppercase">
+                      Certificado Oficial
+                    </span>
                   </div>
-                  <span className="text-[10px] font-bold text-yellow-500 tracking-[0.2em] uppercase">
-                    Certificado Oficial
-                  </span>
+                </div>
+
+                {/* Main Content */}
+                <div className="space-y-1">
+                  <h3 className="text-2xl font-black text-white italic uppercase leading-none">
+                    Representante
+                  </h3>
+
+                  {/* Vipal Logo (Gold Filtered) */}
+                  <div className="relative h-14 w-40 my-3 opacity-90 group-hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/vipal.png"
+                      alt="Vipal Logo"
+                      fill
+                      className="object-contain object-left"
+                      style={{ filter: goldFilter }}
+                    />
+                  </div>
+                </div>
+
+                {/* Footer: Location */}
+                <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-3">
+                  <div className="h-8 w-8 rounded-full bg-zinc-900 flex items-center justify-center border border-white/10">
+                    <MapPin className="h-4 w-4 text-zinc-400" />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-sm">Santiago del Estero</p>
+                    <p className="text-zinc-500 text-[10px] uppercase">Planta Industrial La Banda</p>
+                  </div>
                 </div>
               </div>
-
-              {/* Main Content */}
-              <div className="space-y-1">
-                <h3 className="text-2xl font-black text-white italic uppercase leading-none">
-                  Representante
-                </h3>
-
-                {/* Vipal Logo (Gold Filtered) */}
-                <div className="relative h-14 w-40 my-3 opacity-90 group-hover:opacity-100 transition-opacity">
-                  <Image
-                    src="/vipal.png"
-                    alt="Vipal Logo"
-                    fill
-                    className="object-contain object-left"
-                    style={{ filter: goldFilter }}
-                  />
-                </div>
-              </div>
-
-              {/* Footer: Location */}
-              <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-3">
-                <div className="h-8 w-8 rounded-full bg-zinc-900 flex items-center justify-center border border-white/10">
-                  <MapPin className="h-4 w-4 text-zinc-400" />
-                </div>
-                <div>
-                  <p className="text-white font-bold text-sm">Santiago del Estero</p>
-                  <p className="text-zinc-500 text-[10px] uppercase">Planta Industrial La Banda</p>
-                </div>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

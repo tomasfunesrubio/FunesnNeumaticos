@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 import { CheckCircle2, MapPin, MessageCircle } from "lucide-react"
 
 export function CTASection() {
@@ -15,7 +16,13 @@ export function CTASection() {
       <div className="mx-auto max-w-5xl px-6 lg:px-8 relative z-10 text-center">
 
         {/* HUD Container with Corner Brackets */}
-        <div className="relative p-8 sm:p-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative p-8 sm:p-12"
+        >
           {/* Top Left */}
           <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-primary/50"></div>
           {/* Top Right */}
@@ -26,29 +33,51 @@ export function CTASection() {
           <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-primary/50"></div>
 
           {/* Eyebrow */}
-          <div className="mb-6 animate-fade-in-up">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0 }}
+            className="mb-6"
+          >
             <span className="text-primary font-bold tracking-[0.2em] text-sm uppercase font-mono">
                 // MANTENIMIENTO INTEGRAL
             </span>
-          </div>
+          </motion.div>
 
           {/* Title */}
-          <h2 className="text-4xl sm:text-6xl font-black text-white uppercase tracking-tight mb-6 leading-tight">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-6xl font-black text-white uppercase tracking-tight mb-6 leading-tight"
+          >
             SOLUCIONES DE <br className="hidden sm:block" />
             ALTO RENDIMIENTO <br />
             <span className="text-primary">
               PARA TU FLOTA
             </span>
-          </h2>
+          </motion.h2>
 
           {/* Description */}
-          <p className="text-xl text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-12 font-light">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-12 font-light"
+          >
             Maximizá la rentabilidad de cada kilómetro. Mantenimiento preventivo y correctivo con estándares industriales.
-          </p>
+          </motion.p>
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
-            <a
+            <motion.a
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               href="https://wa.me/5493855711696?text=Hola%20Funes,%20necesito%20asesoramiento%20t%C3%A9cnico%20para%20mi%20flota."
               target="_blank"
               rel="noopener noreferrer"
@@ -58,9 +87,13 @@ export function CTASection() {
                 <MessageCircle className="mr-3 h-5 w-5" />
                 Asesoría Inmediata
               </Button>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               href="https://www.google.com/maps?q=Funes+Neumaticos,+RN34+720,+La+Banda,+Santiago+del+Estero"
               target="_blank"
               rel="noopener noreferrer"
@@ -70,19 +103,25 @@ export function CTASection() {
                 <MapPin className="mr-3 h-5 w-5" />
                 Ver Ubicación
               </Button>
-            </a>
+            </motion.a>
           </div>
 
           {/* Features Strip */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 border-t border-white/5 pt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 border-t border-white/5 pt-10"
+          >
             {["Atención Inmediata", "Presupuesto Sin Cargo", "Garantía Escrita"].map((feature) => (
               <div key={feature} className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-primary" />
                 <span className="text-zinc-300 font-medium uppercase tracking-wide text-sm">{feature}</span>
               </div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
       </div>
     </section>

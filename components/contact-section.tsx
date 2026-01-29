@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
+import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -103,7 +104,13 @@ export function ContactSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* --- Header de la Sección (Modificado: Izquierda + Eyebrow) --- */}
-        <div className="mb-20">
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+        >
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-6">
             <div className="h-1 w-12 bg-primary"></div>
@@ -122,46 +129,57 @@ export function ContactSection() {
               Contactanos para recibir asesoramiento técnico personalizado o solicitar una cotización para tu flota sin compromiso.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* --- Tarjetas de Información --- */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {contactInfo.map((info) => (
-            <div
+            <motion.div
               key={info.title}
-              className="p-6 rounded-none border border-border bg-card/50 hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-md"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <div className="flex h-12 w-12 items-center justify-center bg-primary/10 border border-primary/20 group-hover:bg-primary group-hover:border-primary transition-all duration-300 mb-4">
-                <info.icon className="h-6 w-6 text-primary group-hover:text-black transition-colors duration-300" />
-              </div>
-              <h3 className="font-bold text-foreground uppercase text-xs tracking-wider mb-2">{info.title}</h3>
-              <div className="space-y-1">
-                {info.details.map((detail) => {
-                  if (detail.includes("WhatsApp")) {
+              <div className="p-6 rounded-none border border-border bg-card/50 hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-md h-full">
+                <div className="flex h-12 w-12 items-center justify-center bg-primary/10 border border-primary/20 group-hover:bg-primary group-hover:border-primary transition-all duration-300 mb-4">
+                  <info.icon className="h-6 w-6 text-primary group-hover:text-black transition-colors duration-300" />
+                </div>
+                <h3 className="font-bold text-foreground uppercase text-xs tracking-wider mb-2">{info.title}</h3>
+                <div className="space-y-1">
+                  {info.details.map((detail) => {
+                    if (detail.includes("WhatsApp")) {
+                      return (
+                        <a
+                          key={detail}
+                          href="https://wa.me/5493856981610"
+                          className="flex items-center gap-2 text-primary font-bold hover:text-primary/80 transition-colors mt-1"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MessageCircle className="h-3 w-3" />
+                          {detail}
+                        </a>
+                      )
+                    }
                     return (
-                      <a
-                        key={detail}
-                        href="https://wa.me/5493856981610"
-                        className="flex items-center gap-2 text-primary font-bold hover:text-primary/80 transition-colors mt-1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <MessageCircle className="h-3 w-3" />
-                        {detail}
-                      </a>
+                      <p key={detail} className="text-sm text-muted-foreground font-medium">{detail}</p>
                     )
-                  }
-                  return (
-                    <p key={detail} className="text-sm text-muted-foreground font-medium">{detail}</p>
-                  )
-                })}
+                  })}
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* --- 1. MAPA REAL (Estilo Grises) --- */}
-        <div className="mb-20">
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="flex items-center gap-3 mb-6 border-l-4 border-primary pl-4">
             <div>
               <h3 className="text-2xl font-bold text-foreground uppercase tracking-tight">Nuestra Planta Industrial</h3>
@@ -190,10 +208,15 @@ export function ContactSection() {
               title="Ubicación Funes Neumáticos"
             ></iframe>
           </div>
-        </div>
+        </motion.div>
 
         {/* --- 2. FORMULARIO --- */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="flex items-center gap-3 mb-6 border-l-4 border-primary pl-4">
             <div>
               <h3 className="text-2xl font-bold text-foreground uppercase tracking-tight">Envíanos un mensaje</h3>
@@ -285,7 +308,7 @@ export function ContactSection() {
               </form>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
 
       </div>
     </section>

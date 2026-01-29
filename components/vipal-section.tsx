@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Award, MapPin, CheckCircle2 } from "lucide-react"
 
 export function VipalSection() {
@@ -17,7 +18,13 @@ export function VipalSection() {
       <div className="w-full max-w-4xl mx-auto px-6 relative z-10">
 
         {/* --- CONTENEDOR TIPO "TARJETA FLOTANTE" (Oscuro sobre Blanco) --- */}
-        <div className="relative bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12 shadow-2xl shadow-zinc-200">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12 shadow-2xl shadow-zinc-200"
+        >
 
           {/* Brillo Interior Sutil */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(234,179,8,0.08),transparent_50%)] rounded-3xl pointer-events-none"></div>
@@ -73,7 +80,11 @@ export function VipalSection() {
 
             {/* --- DERECHA: LOGO (El "Premio") --- */}
             <div className="flex-1 flex justify-center items-center w-full relative">
-              <div className="relative w-full max-w-[280px] aspect-[3/1] opacity-90 hover:opacity-100 transition-opacity duration-300">
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="relative w-full max-w-[280px] aspect-[3/1] opacity-90 hover:opacity-100"
+              >
                 <Image
                   src="/vipal.png"
                   alt="Vipal Logo Oficial"
@@ -81,11 +92,11 @@ export function VipalSection() {
                   style={{ filter: goldFilter }}
                   className="object-contain" // drop-shadow omitida para look más limpio
                 />
-              </div>
+              </motion.div>
             </div>
 
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

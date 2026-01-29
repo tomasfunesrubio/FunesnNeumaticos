@@ -1,7 +1,12 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Layers, Tractor, RefreshCw, Flame, ShieldCheck, Gauge, Wrench, Disc, ArrowUpRight } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Layers, Tractor, RefreshCw, Flame, ShieldCheck, Gauge, Wrench, Disc, ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 const services = [
   {
@@ -62,12 +67,56 @@ const services = [
   },
 ]
 
+// Reusable Service Card Component
+function ServiceCard({ service }: { service: typeof services[0] }) {
+  return (
+    <Link href={service.href} className="w-full h-full block">
+      <Card className="group relative bg-card border border-border rounded-none hover:border-primary transition-all duration-300 overflow-hidden h-full">
+        {/* Acento superior al hacer hover */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+
+        <CardContent className="p-8 h-full flex flex-col">
+          {/* Header de la tarjeta: Número e Icono */}
+          <div className="flex justify-between items-start mb-6">
+            <div className="flex h-14 w-14 items-center justify-center bg-secondary border border-border group-hover:bg-primary group-hover:text-black transition-colors duration-300">
+              <service.icon className="h-7 w-7" />
+            </div>
+            <span className="text-4xl font-black text-muted/20 group-hover:text-primary/20 transition-colors select-none">
+              {service.id}
+            </span>
+          </div>
+
+          {/* Contenido */}
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-foreground uppercase tracking-wide mb-3 group-hover:text-primary transition-colors min-h-[3.5rem]">
+              {service.title}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {service.description}
+            </p>
+          </div>
+
+          {/* Footer de la tarjeta (Decorativo técnico) */}
+          <div className="mt-8 pt-4 border-t border-dashed border-border flex items-center justify-between text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors">
+            <span>VER CATÁLOGO</span>
+            <ArrowUpRight className="h-4 w-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
+  )
+}
+
 export function ServicesSection() {
+  const [isExpanded, setIsExpanded] = useState(false)
   const goldFilter = "brightness(0) saturate(100%) invert(63%) sepia(85%) saturate(2333%) hue-rotate(1deg) brightness(93%) contrast(92%)";
+
+  // Split services into two groups
+  const firstGroup = services.slice(0, 4)
+  const secondGroup = services.slice(4, 8)
 
   return (
     <section id="servicios" className="py-24 bg-background scroll-mt-20 relative border-b border-border overflow-hidden">
-
       {/* --- FONDO DECORATIVO (Rueda gigante) --- */}
       <div className="absolute top-20 right-0 translate-x-1/4 opacity-[0.1] pointer-events-none z-0">
         <div className="relative w-[600px] h-[600px] lg:w-[800px] lg:h-[800px]">
@@ -82,7 +131,6 @@ export function ServicesSection() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-
         {/* --- Header Industrial --- */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-4">
@@ -104,48 +152,85 @@ export function ServicesSection() {
           </div>
         </div>
 
-        {/* --- Grid de Servicios --- */}
+        {/* --- Group A: First 4 Services (Always Visible with Scroll Reveal) --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service) => (
-            <Link key={service.id} href={service.href} className="w-full h-full block">
-              <Card
-                className="group relative bg-card border border-border rounded-none hover:border-primary transition-all duration-300 overflow-hidden h-full"
-              >
-                {/* Acento superior al hacer hover */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-
-                <CardContent className="p-8 h-full flex flex-col">
-
-                  {/* Header de la tarjeta: Número e Icono */}
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="flex h-14 w-14 items-center justify-center bg-secondary border border-border group-hover:bg-primary group-hover:text-black transition-colors duration-300">
-                      <service.icon className="h-7 w-7" />
-                    </div>
-                    <span className="text-4xl font-black text-muted/20 group-hover:text-primary/20 transition-colors select-none">
-                      {service.id}
-                    </span>
-                  </div>
-
-                  {/* Contenido */}
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-foreground uppercase tracking-wide mb-3 group-hover:text-primary transition-colors min-h-[3.5rem]">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  {/* Footer de la tarjeta (Decorativo técnico) */}
-                  <div className="mt-8 pt-4 border-t border-dashed border-border flex items-center justify-between text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors">
-                    <span>VER CATÁLOGO</span>
-                    <ArrowUpRight className="h-4 w-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </div>
-
-                </CardContent>
-              </Card>
-            </Link>
+          {firstGroup.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ServiceCard service={service} />
+            </motion.div>
           ))}
+        </div>
+
+        {/* --- Group B: Remaining Services --- */}
+        {/* Mobile: Animated expand/collapse with scroll reveal */}
+        <div className="md:hidden">
+          <AnimatePresence initial={false}>
+            {isExpanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="grid grid-cols-1 gap-6 mt-6">
+                  {secondGroup.map((service) => (
+                    <motion.div
+                      key={service.id}
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <ServiceCard service={service} />
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Desktop: Always visible with scroll reveal */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+          {secondGroup.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ServiceCard service={service} />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* --- Toggle Button (Mobile Only) --- */}
+        <div className="flex justify-center mt-8 md:hidden">
+          <Button
+            variant="outline"
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="group border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 rounded-none px-8 py-6 font-bold tracking-wide uppercase text-sm"
+          >
+            {isExpanded ? (
+              <>
+                <span>Ver Menos</span>
+                <ChevronUp className="ml-2 h-5 w-5 transition-transform group-hover:-translate-y-1" />
+              </>
+            ) : (
+              <>
+                <span>Ver Todos los Servicios</span>
+                <ChevronDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+              </>
+            )}
+          </Button>
         </div>
       </div>
     </section>
