@@ -53,6 +53,7 @@ export function Hero() {
               fill
               className="object-cover object-top"
               priority={index === 0}
+              sizes="100vw"
             />
           </div>
         ))}

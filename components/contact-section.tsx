@@ -1,20 +1,28 @@
-"use client"
-
-import React, { useState } from "react"
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { MessageCircle } from "lucide-react"
 import {
   Phone,
   Mail,
   MapPin,
   Clock,
-  Send
+  MessageCircle, // Used in the inline render if we keep it, but we can't use Client components inline logic for link rendering inside a server component easily if it depends on browser quirks, but these are simple links.
 } from "lucide-react"
+
+// Import Client Islands
+import { ContactMap } from "@/components/contact-map"
+import { HomeContactForm } from "@/components/home-contact-form"
+
+// Import Motion Wrapper for Server Component Parts (if needed, or use a simple shared client wrapper)
+// For the contact info cards, they were animated. I should create a client wrapper for the cards list OR keep them static for now.
+// Given the design quality requirement, I should keep them animated. 
+// Reusing `AnimatedGrid` (which I created earlier) is perfect here!
+import { AnimatedGrid, AnimatedGridItem } from "@/components/animated-grid"
+
+// Also need a wrapper for the Header section if we want it animated on scroll?
+// Or just let it be static. The original had scroll reveal.
+// I will create `SectionHeader` client component if I strictly want animation, or just wrap it in AnimatedGridItem?
+// Let's wrap the Header in a simple client-side RevealWrapper to match the original feel.
+
+import { RevealWrapper } from "@/components/reveal-wrapper" // I'll create this simple wrapper.
+
 
 function TireTrackPattern(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -68,29 +76,6 @@ const contactInfo = [
 ]
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({
-    nombre: "",
-    empresa: "",
-    email: "",
-    telefono: "",
-    mensaje: "",
-  })
-
-  const [isMapLoaded, setIsMapLoaded] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    alert("Gracias por contactarnos. Te responderemos a la brevedad.")
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
   return (
     <section id="contacto" className="scroll-mt-24 py-24 bg-background relative overflow-hidden">
       {/* Fondo decorativo sutil estilo industrial */}
@@ -103,14 +88,8 @@ export function ContactSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
 
-        {/* --- Header de la Sección (Modificado: Izquierda + Eyebrow) --- */}
-        <motion.div
-          className="mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-        >
+        {/* --- Header de la Sección --- */}
+        <RevealWrapper className="mb-20">
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-6">
             <div className="h-1 w-12 bg-primary"></div>
@@ -129,18 +108,12 @@ export function ContactSection() {
               Contactanos para recibir asesoramiento técnico personalizado o solicitar una cotización para tu flota sin compromiso.
             </p>
           </div>
-        </motion.div>
+        </RevealWrapper>
 
         {/* --- Tarjetas de Información --- */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <AnimatedGrid className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {contactInfo.map((info) => (
-            <motion.div
-              key={info.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
+            <AnimatedGridItem key={info.title} className="h-full">
               <div className="p-6 rounded-none border border-border bg-card/50 hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-md h-full">
                 <div className="flex h-12 w-12 items-center justify-center bg-primary/10 border border-primary/20 group-hover:bg-primary group-hover:border-primary transition-all duration-300 mb-4">
                   <info.icon className="h-6 w-6 text-primary group-hover:text-black transition-colors duration-300" />
@@ -168,147 +141,15 @@ export function ContactSection() {
                   })}
                 </div>
               </div>
-            </motion.div>
+            </AnimatedGridItem>
           ))}
-        </div>
+        </AnimatedGrid>
 
-        {/* --- 1. MAPA REAL (Estilo Grises) --- */}
-        <motion.div
-          className="mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center gap-3 mb-6 border-l-4 border-primary pl-4">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground uppercase tracking-tight">Nuestra Planta Industrial</h3>
-              <p className="text-sm text-muted-foreground font-medium">RN34 720, La Banda, Santiago del Estero</p>
-            </div>
-          </div>
+        {/* --- 1. MAPA REAL (Island) --- */}
+        <ContactMap />
 
-          <div className="w-full h-[500px] border border-border shadow-2xl bg-secondary/20 relative group overflow-hidden">
-            {/* Skeleton Loader */}
-            {!isMapLoaded && (
-              <div className="absolute inset-0 bg-zinc-100 animate-pulse z-20 flex items-center justify-center">
-                <span className="text-zinc-400 font-bold text-sm uppercase tracking-widest">Cargando Mapa...</span>
-              </div>
-            )}
-
-            <iframe
-              src="https://maps.google.com/maps?q=Funes+Neumaticos+RN34+720+La+Banda&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              onLoad={() => setIsMapLoaded(true)}
-              className={`transition-opacity duration-700 ${isMapLoaded ? 'opacity-100' : 'opacity-0'}`}
-              title="Ubicación Funes Neumáticos"
-            ></iframe>
-          </div>
-        </motion.div>
-
-        {/* --- 2. FORMULARIO --- */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center gap-3 mb-6 border-l-4 border-primary pl-4">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground uppercase tracking-tight">Envíanos un mensaje</h3>
-              <p className="text-sm text-muted-foreground font-medium">Respuesta técnica en menos de 24hs</p>
-            </div>
-          </div>
-
-          <Card className="bg-card border-border shadow-lg rounded-none relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 -mr-8 -mt-8 rotate-45"></div>
-
-            <CardContent className="p-8 lg:p-10">
-              <form onSubmit={handleSubmit} className="space-y-6">
-
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="nombre" className="text-foreground font-bold text-xs uppercase">Nombre completo *</Label>
-                    <Input
-                      id="nombre"
-                      name="nombre"
-                      value={formData.nombre}
-                      onChange={handleChange}
-                      placeholder="Tu nombre"
-                      required
-                      className="bg-secondary/30 border-border h-12 rounded-none focus:border-primary focus:ring-0"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="empresa" className="text-foreground font-bold text-xs uppercase">Empresa</Label>
-                    <Input
-                      id="empresa"
-                      name="empresa"
-                      value={formData.empresa}
-                      onChange={handleChange}
-                      placeholder="Nombre de tu empresa"
-                      className="bg-secondary/30 border-border h-12 rounded-none focus:border-primary focus:ring-0"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="telefono" className="text-foreground font-bold text-xs uppercase">Teléfono *</Label>
-                    <Input
-                      id="telefono"
-                      name="telefono"
-                      type="tel"
-                      value={formData.telefono}
-                      onChange={handleChange}
-                      placeholder="+54 ..."
-                      required
-                      className="bg-secondary/30 border-border h-12 rounded-none focus:border-primary focus:ring-0"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground font-bold text-xs uppercase">Email *</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="tucorreo@empresa.com"
-                    required
-                    className="bg-secondary/30 border-border h-12 rounded-none focus:border-primary focus:ring-0"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="mensaje" className="text-foreground font-bold text-xs uppercase">Mensaje *</Label>
-                  <Textarea
-                    id="mensaje"
-                    name="mensaje"
-                    value={formData.mensaje}
-                    onChange={handleChange}
-                    placeholder="Contanos qué necesitas: tipo de neumáticos, cantidad, medidas, etc."
-                    rows={6}
-                    required
-                    className="bg-secondary/30 border-border rounded-none focus:border-primary focus:ring-0 resize-none p-4"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full md:w-auto px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-none font-bold h-12 text-sm tracking-wide shadow-lg shadow-primary/20 transition-all"
-                >
-                  ENVIAR CONSULTA
-                  <Send className="ml-2 h-4 w-4" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </motion.div>
+        {/* --- 2. FORMULARIO (Island) --- */}
+        <HomeContactForm />
 
       </div>
     </section>
