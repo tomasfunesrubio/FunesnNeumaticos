@@ -81,8 +81,8 @@ export function VipalSection() {
             {/* --- DERECHA: LOGO (El "Premio") --- */}
             <div className="flex-1 flex justify-center items-center w-full relative">
               <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                animate={{ y: [0, -20, 0] }}
+                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
                 className="relative w-full max-w-[280px] aspect-[3/1] opacity-90 hover:opacity-100"
               >
                 <Image
