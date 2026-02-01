@@ -7,6 +7,9 @@
 /.next/
 /out/
 
+# agent
+/agent/
+/agents/
 # production
 /build
 
