@@ -41,7 +41,7 @@ export default function RetacadoPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {retacadoCatalog.map((item) => (
-                            <ProductCard key={item.id} product={item} />
+                            <ProductCard key={item.id} product={item} baseSlug="retacado" badgeLabel="RETACADO" />
                         ))}
                     </div>
                 </div>

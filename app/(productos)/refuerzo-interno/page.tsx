@@ -41,7 +41,7 @@ export default function RefuerzoPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {refuerzoCatalog.map((item) => (
-                            <ProductCard key={item.id} product={item} />
+                            <ProductCard key={item.id} product={item} baseSlug="refuerzo-interno" badgeLabel="REFUERZO" />
                         ))}
                     </div>
                 </div>

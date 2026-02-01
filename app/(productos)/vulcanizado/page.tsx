@@ -44,7 +44,7 @@ export default function VulcanizadoPage() {
                     />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {pesados.map((item) => (
-                            <ProductCard key={item.id} product={item} />
+                            <ProductCard key={item.id} product={item} baseSlug="vulcanizado" badgeLabel="VULCANIZADO" />
                         ))}
                     </div>
                 </div>
@@ -60,7 +60,7 @@ export default function VulcanizadoPage() {
                     />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {livianos.map((item) => (
-                            <ProductCard key={item.id} product={item} />
+                            <ProductCard key={item.id} product={item} baseSlug="vulcanizado" badgeLabel="VULCANIZADO" />
                         ))}
                     </div>
                 </div>
@@ -76,7 +76,7 @@ export default function VulcanizadoPage() {
                     />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {agricola.map((item) => (
-                            <ProductCard key={item.id} product={item} />
+                            <ProductCard key={item.id} product={item} baseSlug="vulcanizado" badgeLabel="VULCANIZADO" />
                         ))}
                     </div>
                 </div>

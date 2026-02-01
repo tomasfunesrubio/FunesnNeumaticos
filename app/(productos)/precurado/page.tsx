@@ -33,7 +33,7 @@ export default function PrecuradoPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {pesados.map((item) => (
-              <ProductCard key={item.id} product={item} />
+              <ProductCard key={item.id} product={item} baseSlug="precurado" badgeLabel="PRECURADO" />
             ))}
           </div>
         </div>
@@ -50,7 +50,7 @@ export default function PrecuradoPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {medianos.map((item) => (
-              <ProductCard key={item.id} product={item} />
+              <ProductCard key={item.id} product={item} baseSlug="precurado" badgeLabel="PRECURADO" />
             ))}
           </div>
         </div>

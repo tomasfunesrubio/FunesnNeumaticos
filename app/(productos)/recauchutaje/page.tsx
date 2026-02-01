@@ -41,7 +41,7 @@ export default function RecauchutajePage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {recauchutajeCatalog.map((item) => (
-                            <ProductCard key={item.id} product={item} />
+                            <ProductCard key={item.id} product={item} baseSlug="recauchutaje" badgeLabel="RECAUCHUTAJE" />
                         ))}
                     </div>
                 </div>
