@@ -109,7 +109,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-4 mb-16"
           >
             <a
-              href="https://wa.me/543856981610?text=Hola%20Funes%20Neumáticos,%20quisiera%20solicitar%20una%20cotización."
+              href=""
               target="_blank"
               rel="noopener noreferrer"
             >
