@@ -8,12 +8,55 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Funes Neumáticos | Ingeniería en Transporte',
-  description: 'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas: Precurado premium, mecánica ligera, tren delantero y alineación 3D. Maximizamos tu rendimiento kilométrico.',
+  metadataBase: new URL('https://funesneumaticos.com'),
+  title: {
+    default: 'Funes Neumáticos | Ingeniería en Transporte',
+    template: '%s | Funes Neumáticos',
+  },
+  description:
+    'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas: Precurado premium, mecánica ligera, tren delantero y alineación 3D. Maximizamos tu rendimiento kilométrico.',
   generator: 'v0.app',
   icons: {
     icon: '/icono.png',
     apple: '/icono.png',
+  },
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_AR',
+    siteName: 'Funes Neumáticos',
+    title: 'Funes Neumáticos | Ingeniería en Transporte',
+    description:
+      'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas de transporte.',
+    url: '/',
+    images: [
+      {
+        url: '/icono.png',
+        width: 512,
+        height: 512,
+        alt: 'Funes Neumáticos Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Funes Neumáticos | Ingeniería en Transporte',
+    description:
+      'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas de transporte.',
+    images: ['/icono.png'],
   },
 };
 
