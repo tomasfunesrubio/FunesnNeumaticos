@@ -7,9 +7,15 @@
 /.next/
 /out/
 
-# agent
+# agents / skills / AI context (no aportan al repo)
+.agents/
+.agent/
 /agent/
 /agents/
+_agents/
+_agent/
+.gemini/
+
 # production
 /build
 
