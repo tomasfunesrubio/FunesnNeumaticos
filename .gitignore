@@ -8,8 +8,8 @@
 /out/
 
 # agents / skills / AI context (no aportan al repo)
-.agents/
-.agent/
+.agents/skill   
+.agent/skills
 /agent/
 /agents/
 _agents/
