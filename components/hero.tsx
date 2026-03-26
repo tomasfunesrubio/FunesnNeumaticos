@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Shield, Clock, Award, Star, MapPin } from "lucide-react"
 
 const backgroundImages = [
-  "/hero/slide-1.jpg",
-  "/hero/slide-2.jpg",
-  "/hero/slide-3.jpg",
-  "/hero/slide-4.jpg"
+  "/hero/slide-1.webp",
+  "/hero/slide-2.webp",
+  "/hero/slide-3.webp",
+  "/hero/slide-4.webp"
 ]
 
 const stats = [
