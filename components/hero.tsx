@@ -109,7 +109,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-4 mb-16"
           >
             <a
-              href=""
+              href="https://api.whatsapp.com/send?phone=5493854135265&text=Hola%21%20Quisiera%20cotizar%20un%20servicio."
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -70,7 +70,7 @@ export default async function VulcanizadoDetailPage({ params }: { params: Promis
                 description={product.description}
                 specs={specs}
                 ctaText="Consultar Reparación"
-                ctaLink={`https://api.whatsapp.com/send/?phone=543856981610&text=Hola%21%20Me%20interesa%20realizar%20un%20servicio%20de%20${product.name}`}
+                ctaLink={`https://api.whatsapp.com/send?phone=5493854135265&text=Hola%21%20Me%20interesa%20realizar%20un%20servicio%20de%20${product.name}`}
             />
             <Footer />
         </main>

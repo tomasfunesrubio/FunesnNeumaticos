@@ -200,7 +200,7 @@ export function Header() {
               <Instagram className="h-5 w-5" />
             </a>
           </div>
-          <a href="" target="_blank" rel="noopener noreferrer">
+          <a href="https://api.whatsapp.com/send?phone=5493854135265&text=Hola%21%20Quisiera%20realizar%20una%20consulta." target="_blank" rel="noopener noreferrer">
             <Button className="bg-primary text-black hover:bg-primary/90 font-bold uppercase tracking-wider px-6 rounded-none shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 flex items-center gap-2">
               <svg
                 viewBox="0 0 24 24"
@@ -269,7 +269,7 @@ export function Header() {
                 <Instagram className="h-5 w-5" /> Instagram
               </a>
             </div>
-            <a href="https://api.whatsapp.com/send/?phone=543856981610&text=Hola%21%20Me%20gustar%C3%ADa%20realizar%20una%20consulta" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="block mt-4 px-4 pb-8">
+            <a href="https://api.whatsapp.com/send?phone=5493854135265&text=Hola%21%20Me%20gustar%C3%ADa%20realizar%20una%20consulta" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="block mt-4 px-4 pb-8">
               <Button className="w-full h-12 bg-primary text-black hover:bg-primary/90 rounded-none font-bold uppercase text-lg shadow-lg flex items-center justify-center gap-2">
                 <svg
                   viewBox="0 0 24 24"

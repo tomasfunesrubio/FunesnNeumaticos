@@ -125,7 +125,7 @@ export function ContactSection() {
                       return (
                         <a
                           key={detail}
-                          href="https://wa.me/5493856981610"
+                          href="https://api.whatsapp.com/send?phone=5493854135265"
                           className="flex items-center gap-2 text-primary font-bold hover:text-primary/80 transition-colors mt-1"
                           target="_blank"
                           rel="noopener noreferrer"

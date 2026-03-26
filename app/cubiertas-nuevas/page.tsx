@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: "Catálogo completo de neumáticos para autos, camionetas y camiones. Encontrá la medida ideal para tu vehículo.",
 }
 
-const WHATSAPP_NUMBER = '5493855711696'
+const WHATSAPP_NUMBER = '5493854135265'
 
 export default function CubiertasNuevasPage() {
     return (

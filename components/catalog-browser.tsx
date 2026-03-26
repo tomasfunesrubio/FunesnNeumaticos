@@ -13,7 +13,7 @@ import { ProductCard } from '@/components/product-card' // Assumes we can reuse 
 // For now, I will include the inline ProductCard logic here to avoid type mismatch issues, or better, adapt it.
 // Actually, let's keep the inline card logic but simplified, or specific to New Tires.
 
-const WHATSAPP_NUMBER = '5493855711696'
+const WHATSAPP_NUMBER = '5493854135265'
 
 // --- Internal NewTireCard ---
 import { Package } from 'lucide-react'

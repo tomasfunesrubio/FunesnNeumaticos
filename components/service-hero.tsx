@@ -28,7 +28,7 @@ export function ServiceHero({
     ctaLink
 }: ServiceHeroProps) {
 
-    const defaultWhatsappUrl = "https://wa.me/543856981610"
+    const defaultWhatsappUrl = "https://api.whatsapp.com/send?phone=5493854135265"
     const finalLink = ctaLink || defaultWhatsappUrl
 
     return (

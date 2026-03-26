@@ -67,7 +67,7 @@ export default async function RetacadoDetailPage({ params }: { params: Promise<{
                 description={product.description}
                 specs={specs}
                 ctaText={`Consultar por ${product.model}`}
-                ctaLink={`https://api.whatsapp.com/send/?phone=543856981610&text=Hola%21%20Me%20interesa%20el%20modelo%20de%20retacado%20${product.model}`}
+                ctaLink={`https://api.whatsapp.com/send?phone=5493854135265&text=Hola%21%20Me%20interesa%20el%20modelo%20de%20retacado%20${product.model}`}
             />
             <Footer />
         </main>

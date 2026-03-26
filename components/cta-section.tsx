@@ -78,7 +78,7 @@ export function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              href="https://wa.me/5493855711696?text=Hola%20Funes,%20necesito%20asesoramiento%20t%C3%A9cnico%20para%20mi%20flota."
+              href="https://api.whatsapp.com/send?phone=5493854135265&text=Hola%20Funes,%20necesito%20asesoramiento%20t%C3%A9cnico%20para%20mi%20flota."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
