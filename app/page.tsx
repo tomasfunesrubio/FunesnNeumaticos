@@ -100,9 +100,8 @@ const jsonLd = {
     },
   ],
   sameAs: [
-    // Agregar URLs de redes sociales cuando estén disponibles
-    // "https://www.facebook.com/funesneumaticos",
-    // "https://www.instagram.com/funesneumaticos",
+    "https://www.facebook.com/funesneumaticos",
+    "https://www.instagram.com/funesneumaticos/",
   ],
 }
 

@@ -12,13 +12,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1.0,
         },
 
-        // ── Servicios / Productos (prioridad alta) ──
+        // ── Reconstrucción de Neumáticos (prioridad alta) ──
         {
-            url: `${baseUrl}/productos`,
+            url: `${baseUrl}/precurado`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
         },
+        {
+            url: `${baseUrl}/retacado`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/vulcanizado`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/recauchutaje`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/refuerzo-interno`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+
+        // ── Servicios / Taller (prioridad alta) ──
         {
             url: `${baseUrl}/cubiertas-nuevas`,
             lastModified: new Date(),
@@ -36,6 +62,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/productos`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.7,
         },
 
         // ── Páginas institucionales (prioridad media) ──

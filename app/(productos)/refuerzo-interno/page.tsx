@@ -11,6 +11,10 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
     title: "Refuerzo Interno Agrícola | Funes Neumáticos",
     description: "Soluciones de refuerzo estructural para neumáticos agrícolas. Resistencia garantizada.",
+    alternates: {
+        canonical: '/refuerzo-interno',
+    },
+    robots: { index: true, follow: true },
 }
 
 export default function RefuerzoPage() {

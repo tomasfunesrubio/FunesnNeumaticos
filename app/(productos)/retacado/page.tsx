@@ -11,6 +11,10 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
     title: "Retacado de Neumáticos | Funes Neumáticos",
     description: "Soluciones de retacado para maquinaria agrícola. Maximizamos el agarre y vida útil de sus cubiertas.",
+    alternates: {
+        canonical: '/retacado',
+    },
+    robots: { index: true, follow: true },
 }
 
 export default function RetacadoPage() {

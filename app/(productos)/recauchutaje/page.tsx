@@ -11,6 +11,10 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
     title: "Recauchutaje Agrícola | Funes Neumáticos",
     description: "Recuperación integral de neumáticos para maquinaria agrícola. Procesos certificados.",
+    alternates: {
+        canonical: '/recauchutaje',
+    },
+    robots: { index: true, follow: true },
 }
 
 export default function RecauchutajePage() {

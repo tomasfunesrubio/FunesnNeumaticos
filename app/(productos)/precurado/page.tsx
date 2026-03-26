@@ -10,7 +10,12 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Diseños de Precurado | Funes Neumáticos",
-  description: "Catálogo de bandas precuradas para transporte de carga y pasajeros. Reconstrucción certificada VIPAL.",
+  description:
+    "Catálogo de bandas precuradas para transporte de carga y pasajeros. Reconstrucción certificada VIPAL.",
+  alternates: {
+    canonical: '/precurado',
+  },
+  robots: { index: true, follow: true },
 }
 
 export default function PrecuradoPage() {

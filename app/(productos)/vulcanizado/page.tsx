@@ -11,6 +11,10 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
     title: "Vulcanizado y Reparación | Funes Neumáticos",
     description: "Servicio técnico de vulcanizado y reparación para todo tipo de neumáticos.",
+    alternates: {
+        canonical: '/vulcanizado',
+    },
+    robots: { index: true, follow: true },
 }
 
 export default function VulcanizadoPage() {
