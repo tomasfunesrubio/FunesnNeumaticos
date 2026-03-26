@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   description:
     'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas: Precurado premium, mecánica ligera, tren delantero y alineación 3D. Maximizamos tu rendimiento kilométrico.',
   generator: 'v0.app',
+  verification: {
+    google: 'xsCdW2dO7Va7dC7AdCFMhK-EF4t0KoRW0vGvOm4I-yA',
+  },
   icons: {
     icon: '/icono.png',
     apple: '/icono.png',
