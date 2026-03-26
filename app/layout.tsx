@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   },
   description:
     'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas: Precurado premium, mecánica ligera, tren delantero y alineación 3D. Maximizamos tu rendimiento kilométrico.',
+  applicationName: 'Funes Neumáticos',
   generator: 'v0.app',
   verification: {
     google: 'xsCdW2dO7Va7dC7AdCFMhK-EF4t0KoRW0vGvOm4I-yA',
@@ -63,6 +64,15 @@ export const metadata: Metadata = {
   },
 };
 
+// JSON-LD WebSite – tells Google the official site name and alternate brand names
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Funes Neumáticos',
+  alternateName: ['Funes Neumáticos Santiago', 'Funes Neumaticos'],
+  url: 'https://funesneumaticos.com/',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,6 +81,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         {children}
         <Analytics />
       </body>
