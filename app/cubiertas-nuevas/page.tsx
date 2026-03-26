@@ -6,7 +6,17 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: "Venta de Neumáticos Nuevos | Funes Neumáticos",
-    description: "Catálogo completo de neumáticos para autos, camionetas y camiones. Encontrá la medida ideal para tu vehículo.",
+    description: "Catálogo completo de cubiertas para autos, camionetas y camiones en Santiago del Estero. Stock permanente, asesoramiento técnico.",
+    alternates: { canonical: '/cubiertas-nuevas' },
+    robots: { index: true, follow: true },
+    openGraph: {
+        title: "Venta de Neumáticos Nuevos | Funes Neumáticos",
+        description: "Catálogo completo de neumáticos. Encontrá la medida ideal y consultá con nuestros asesores técnicos.",
+        url: "https://funesneumaticos.com/cubiertas-nuevas",
+        siteName: "Funes Neumáticos",
+        locale: "es_AR",
+        type: "website",
+    },
 }
 
 const WHATSAPP_NUMBER = '5493854135265'

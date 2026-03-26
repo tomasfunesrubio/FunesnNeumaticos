@@ -29,7 +29,37 @@ import { ContactHero } from "@/components/contact-hero"
 
 export const metadata: Metadata = {
   title: "Contacto | Funes Neumáticos",
-  description: "Canales de contacto oficial. Atención telefónica, WhatsApp y ubicación de nuestra planta industrial.",
+  description: "Contactá a Funes Neumáticos. Atención telefónica, WhatsApp, email y dirección de planta en Santiago del Estero.",
+  alternates: { canonical: '/contacto' },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Contacto | Funes Neumáticos",
+    description: "Canales de contacto oficial. Atención telefónica, WhatsApp y ubicación de planta industrial en La Banda, Santiago del Estero.",
+    url: "https://funesneumaticos.com/contacto",
+    siteName: "Funes Neumáticos",
+    locale: "es_AR",
+    type: "website",
+  },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contacto – Funes Neumáticos",
+  url: "https://funesneumaticos.com/contacto",
+  mainEntity: {
+    "@type": "AutoRepair",
+    name: "Funes Neumáticos",
+    telephone: "+54 385 413-5265",
+    email: "ventas@funesneumaticos.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "RN34 720",
+      addressLocality: "La Banda",
+      addressRegion: "Santiago del Estero",
+      addressCountry: "AR",
+    },
+  },
 }
 
 const contactInfo = [
@@ -39,7 +69,7 @@ const contactInfo = [
     details: [
       "Fijo: (0385) 427-6652",
       "Móvil: 0385 154-135265",
-      "WhatsApp: 385 698 1610"
+      "WhatsApp: 385 413-5265"
     ],
     action: "tel:03854276652",
   },
@@ -66,6 +96,7 @@ const contactInfo = [
 export default function ContactoPage() {
   return (
     <main className="min-h-screen bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
 
       <ContactHero />

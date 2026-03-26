@@ -49,10 +49,15 @@ export function Hero() {
           >
             <Image
               src={src}
-              alt={`Imagen de fondo ${index + 1}`}
+              alt={`Funes Neumáticos – planta industrial slide ${index + 1}`}
               fill
               className="object-cover object-top"
+              // First image is the LCP element — preload it immediately
               priority={index === 0}
+              fetchPriority={index === 0 ? "high" : "low"}
+              // Lazy-load non-visible slides to avoid wasting bandwidth
+              loading={index === 0 ? "eager" : "lazy"}
+              quality={85}
               sizes="100vw"
             />
           </div>

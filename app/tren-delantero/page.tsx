@@ -23,12 +23,38 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
     title: "Reparación de Tren Delantero y Frenos | Funes Neumáticos",
-    description: "Diagnóstico y reparación integral de tren delantero, suspensión y frenos para flotas pesadas y vehiculos livianos. Garantía de seguridad.",
+    description: "Diagnóstico y reparación integral de tren delantero, suspensión y frenos para flotas pesadas y vehículos livianos en Santiago del Estero.",
+    alternates: { canonical: '/tren-delantero' },
+    robots: { index: true, follow: true },
+    openGraph: {
+        title: "Reparación de Tren Delantero y Frenos | Funes Neumáticos",
+        description: "Seguridad y confort de marcha. Reparación integral de sistemas de dirección y amortiguación para toda tu flota.",
+        url: "https://funesneumaticos.com/tren-delantero",
+        siteName: "Funes Neumáticos",
+        locale: "es_AR",
+        type: "website",
+    },
+}
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Reparación de Tren Delantero y Frenos",
+    description: "Diagnóstico y reparación integral de tren delantero, suspensión y frenos para flotas pesadas y livianas.",
+    provider: {
+        "@type": "AutoRepair",
+        name: "Funes Neumáticos",
+        url: "https://funesneumaticos.com",
+    },
+    areaServed: { "@type": "City", name: "Santiago del Estero" },
+    serviceType: "Front End and Brake Repair",
+    url: "https://funesneumaticos.com/tren-delantero",
 }
 
 export default function TrenDelanteroPage() {
     return (
         <main className="min-h-screen bg-zinc-50">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <Header />
 
             <ServiceHero

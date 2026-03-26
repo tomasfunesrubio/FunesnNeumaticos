@@ -17,12 +17,44 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
     title: "Alineación y Balanceo Computarizado | Funes Neumáticos",
-    description: "Servicio de alineación 3D y balanceo para transporte pesado y liviano. Precisión láser para maximizar la vida útil de sus neumáticos.",
+    description: "Servicio de alineación 3D y balanceo para transporte pesado y liviano. Precisión láser para maximizar la vida útil de sus neumáticos en Santiago del Estero.",
+    alternates: { canonical: '/alineado-balanceado' },
+    robots: { index: true, follow: true },
+    openGraph: {
+        title: "Alineación y Balanceo Computarizado | Funes Neumáticos",
+        description: "Precisión láser para toda tu flota. Maximizá la vida útil de tus neumáticos y reducí el consumo de combustible.",
+        url: "https://funesneumaticos.com/alineado-balanceado",
+        siteName: "Funes Neumáticos",
+        locale: "es_AR",
+        type: "website",
+    },
+}
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Alineación y Balanceo Computarizado",
+    description: "Servicio de alineación 3D y balanceo para transporte pesado y liviano. Precisión láser para maximizar la vida útil de los neumáticos.",
+    provider: {
+        "@type": "AutoRepair",
+        name: "Funes Neumáticos",
+        url: "https://funesneumaticos.com",
+    },
+    areaServed: {
+        "@type": "City",
+        name: "Santiago del Estero",
+    },
+    serviceType: "Wheel Alignment and Balancing",
+    url: "https://funesneumaticos.com/alineado-balanceado",
 }
 
 export default function AlineadoPage() {
     return (
         <main className="min-h-screen bg-zinc-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header />
 
             <ServiceHero

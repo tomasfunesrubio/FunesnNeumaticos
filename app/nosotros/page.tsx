@@ -16,7 +16,32 @@ import { NostrosHero } from "@/components/nosotros-hero"
 
 export const metadata: Metadata = {
   title: "Sobre Nosotros | Funes Neumáticos",
-  description: "Más de 20 años de experiencia en el recapado y reconstrucción de neumáticos. Conozca nuestra planta y nuestros valores.",
+  description: "Más de 20 años liderando la reconstrucción de neumáticos en Santiago del Estero. Planta industrial ISO 9001. Representante oficial VIPAL.",
+  alternates: { canonical: '/nosotros' },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Sobre Nosotros | Funes Neumáticos",
+    description: "Más de 20 años de experiencia. La única planta de reconstrucción de neumáticos agrícolas en Santiago del Estero.",
+    url: "https://funesneumaticos.com/nosotros",
+    siteName: "Funes Neumáticos",
+    locale: "es_AR",
+    type: "website",
+  },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "Sobre Nosotros – Funes Neumáticos",
+  description: "Más de 20 años liderando la reconstrucción de neumáticos en Santiago del Estero. Representante oficial VIPAL.",
+  url: "https://funesneumaticos.com/nosotros",
+  mainEntity: {
+    "@type": "AutoRepair",
+    name: "Funes Neumáticos",
+    foundingDate: "2003",
+    url: "https://funesneumaticos.com",
+    hasCredential: "ISO 9001",
+  },
 }
 
 const benefits = [
@@ -31,6 +56,10 @@ const benefits = [
 export default function NosotrosPage() {
   return (
     <main className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <NostrosHero />
