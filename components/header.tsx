@@ -88,7 +88,7 @@ export function Header() {
     ? "text-gray-200 hover:text-primary"
     : "text-muted-foreground hover:text-primary";
 
-  const goldFilter = "brightness(0) saturate(100%) invert(63%) sepia(85%) saturate(2333%) hue-rotate(1deg) brightness(93%) contrast(92%)"
+  const goldFilter = "brightness(0) saturate(100%) invert(74%) sepia(74%) saturate(542%) hue-rotate(358deg) brightness(101%) contrast(103%)"
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${!isTransparent
