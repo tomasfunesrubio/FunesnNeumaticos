@@ -168,52 +168,34 @@ export function ServicesSection() {
         </div>
 
         {/* --- Group B: Remaining Services --- */}
-        {/* Mobile: Animated expand/collapse with scroll reveal */}
-        <div className="md:hidden">
-          <AnimatePresence initial={false}>
-            {isExpanded && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <div className="grid grid-cols-1 gap-6 mt-6">
-                  {secondGroup.map((service) => (
-                    <motion.div
-                      key={service.id}
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <ServiceCard service={service} />
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Desktop: Always visible with scroll reveal */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-          {secondGroup.map((service, index) => (
+        <AnimatePresence initial={false}>
+          {isExpanded && (
             <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="overflow-hidden"
             >
-              <ServiceCard service={service} />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+                {secondGroup.map((service, index) => (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <ServiceCard service={service} />
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
-          ))}
-        </div>
+          )}
+        </AnimatePresence>
 
-        {/* --- Toggle Button (Mobile Only) --- */}
-        <div className="flex justify-center mt-8 md:hidden">
+        {/* --- Toggle Button --- */}
+        <div className="flex justify-center mt-8">
           <Button
             variant="outline"
             onClick={() => setIsExpanded(!isExpanded)}
