@@ -119,9 +119,7 @@ export default function TrenDelanteroPage() {
                             "Elásticos y abrazaderas"
                         ]}
                         imageContent={
-                            <div className="absolute inset-0 bg-zinc-800 flex items-center justify-center text-zinc-600 font-mono text-sm">
-                                [IMAGEN: Amortiguadores]
-                            </div>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/amortiguadores.png')" }}></div>
                         }
                     />
 
@@ -136,9 +134,7 @@ export default function TrenDelanteroPage() {
                         ]}
                         reversed={true}
                         imageContent={
-                            <div className="absolute inset-0 bg-zinc-800 flex items-center justify-center text-zinc-600 font-mono text-sm">
-                                [IMAGEN: Rotulas]
-                            </div>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/rotulas_direccion.png')" }}></div>
                         }
                     />
 
@@ -152,9 +148,7 @@ export default function TrenDelanteroPage() {
                             "Rodamientos de maza"
                         ]}
                         imageContent={
-                            <div className="absolute inset-0 bg-zinc-800 flex items-center justify-center text-zinc-600 font-mono text-sm">
-                                [IMAGEN: Sistema de Frenos]
-                            </div>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/sistema_frenos.png')" }}></div>
                         }
                     />
                 </div>

@@ -106,11 +106,8 @@ export default function AlineadoPage() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="order-2 lg:order-1">
-                            <div className="relative aspect-[4/3] bg-zinc-200 lg:-rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl border-4 border-white">
-                                <div className="absolute inset-0 bg-zinc-800 flex items-center justify-center text-zinc-600 font-mono text-sm">
-                                    {/* Placeholder visible */}
-                                    [IMAGEN TALLER: Alineadora 3D]
-                                </div>
+                            <div className="relative aspect-[4/3] bg-zinc-200 lg:-rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl border-4 border-white overflow-hidden">
+                                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/alineadora_3d.png')" }}></div>
                             </div>
                         </div>
 
