@@ -5,6 +5,7 @@ import { getProductsByCategory } from "@/lib/data-precurado"
 import { Truck, Bus } from "lucide-react"
 import { ProductCard } from "@/components/product-card"
 import { CategoryHeader } from "@/components/category-header"
+import { ExpandableProductGrid } from "@/components/expandable-product-grid"
 import { PrecuradoHero } from "@/components/precurado-hero"
 import { Metadata } from "next"
 
@@ -27,8 +28,22 @@ export default function PrecuradoPage() {
       <Header />
       <PrecuradoHero />
 
+      {/* NAVEGACIÓN RÁPIDA (Sticky) */}
+      <div className="w-full border-b border-zinc-200 bg-zinc-100/95 backdrop-blur-md py-3 sm:py-4 sticky top-[72px] z-40 shadow-sm">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-nowrap items-center justify-center gap-2 sm:gap-6 w-full">
+          <a href="#pesados" className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-5 py-2 sm:py-2.5 rounded-none border-2 border-zinc-300 bg-white text-[11px] sm:text-sm font-bold uppercase tracking-wider text-zinc-600 hover:border-primary hover:text-black transition-all shadow-sm">
+            <Truck className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+            <span className="truncate">Pesados</span>
+          </a>
+          <a href="#medianos" className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-5 py-2 sm:py-2.5 rounded-none border-2 border-zinc-300 bg-white text-[11px] sm:text-sm font-bold uppercase tracking-wider text-zinc-600 hover:border-primary hover:text-black transition-all shadow-sm">
+            <Bus className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+            <span className="truncate">Medianos <span className="hidden sm:inline">& Reparto</span></span>
+          </a>
+        </div>
+      </div>
+
       {/* SECCIÓN 1: CAMIONES PESADOS */}
-      <section id="pesados" className="py-20 relative">
+      <section id="pesados" className="py-20 relative scroll-mt-32 lg:scroll-mt-40">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <CategoryHeader
             title="Transporte Pesado"
@@ -36,16 +51,18 @@ export default function PrecuradoPage() {
             icon={<Truck className="h-8 w-8" />}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pesados.map((item) => (
-              <ProductCard key={item.id} product={item} baseSlug="precurado" badgeLabel="PRECURADO" />
-            ))}
-          </div>
+          <ExpandableProductGrid
+            products={pesados}
+            baseSlug="precurado"
+            badgeLabel="PRECURADO"
+            itemsToShowMobile={4}
+            itemsToShowDesktop={8}
+          />
         </div>
       </section>
 
       {/* SECCIÓN 2: CAMIONES MEDIANOS */}
-      <section id="medianos" className="py-20 bg-white border-y border-zinc-200 relative">
+      <section id="medianos" className="py-20 bg-white border-y border-zinc-200 relative scroll-mt-32 lg:scroll-mt-40">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <CategoryHeader
             title="Medianos & Reparto"
