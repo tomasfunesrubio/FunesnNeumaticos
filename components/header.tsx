@@ -88,7 +88,7 @@ export function Header() {
     ? "text-gray-200 hover:text-primary"
     : "text-muted-foreground hover:text-primary";
 
-  const goldFilter = "brightness(0) saturate(100%) invert(74%) sepia(74%) saturate(542%) hue-rotate(358deg) brightness(101%) contrast(103%)"
+  const goldFilter = "brightness(0) saturate(100%) invert(74%) sepia(74%) saturate(542%) hue-rotate(358deg) brightness(85%) contrast(105%)"
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${!isTransparent
@@ -100,14 +100,24 @@ export function Header() {
         {/* --- LOGO --- */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 transition-transform active:scale-95">
-            <div className="relative h-12 w-auto">
+            <div className="relative h-12 w-auto flex items-center">
+              {/* Logo Original (Mantiene el tamaño de la caja) */}
               <Image
                 src="/logo.png"
                 alt="Funes Neumáticos S.R.L."
                 width={180}
                 height={60}
-                className="h-12 w-auto object-contain transition-all duration-500"
-                style={{ filter: isTransparent ? goldFilter : "none" }}
+                className={`h-12 w-auto object-contain transition-opacity duration-500 ${isTransparent ? "opacity-0" : "opacity-100"}`}
+                priority
+              />
+              {/* Logo Dorado (Absoluto superpuesto) */}
+              <Image
+                src="/logo.png"
+                alt="Funes Neumáticos S.R.L. Dorado"
+                width={180}
+                height={60}
+                className={`absolute inset-0 h-12 w-auto object-contain transition-opacity duration-500 ${isTransparent ? "opacity-100" : "opacity-0"}`}
+                style={{ filter: goldFilter }}
                 priority
               />
             </div>

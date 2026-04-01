@@ -109,7 +109,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
 
 export function ServicesSection() {
   const [isExpanded, setIsExpanded] = useState(false)
-  const goldFilter = "brightness(0) saturate(100%) invert(74%) sepia(74%) saturate(542%) hue-rotate(358deg) brightness(101%) contrast(103%)";
+  const goldFilter = "brightness(0) saturate(100%) invert(74%) sepia(74%) saturate(542%) hue-rotate(358deg) brightness(85%) contrast(105%)";
 
   // Split services into two groups
   const firstGroup = services.slice(0, 4)
