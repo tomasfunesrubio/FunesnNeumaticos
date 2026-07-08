@@ -28,7 +28,7 @@ const services = [
     icon: RefreshCw,
     title: "Recauchutaje",
     description: "Renovación integral para devolver la vida útil al neumático agrícola.",
-    href: "/recauchutaje",
+    href: "",
   },
   {
     id: "04",
@@ -58,52 +58,59 @@ const services = [
     description: "Diagnóstico y reparación de suspensión, frenos y dirección.",
     href: "/tren-delantero",
   },
-  {
-    id: "08",
-    icon: Disc,
-    title: "Neumáticos Nuevos",
-    description: "Venta directa de las mejores marcas para renovar tu flota.",
-    href: "/cubiertas-nuevas",
-  },
 ]
 
 // Reusable Service Card Component
 function ServiceCard({ service }: { service: typeof services[0] }) {
-  return (
-    <Link href={service.href} className="w-full h-full block">
-      <Card className="group relative bg-card border border-border rounded-none hover:border-primary transition-all duration-300 overflow-hidden h-full">
-        {/* Acento superior al hacer hover */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+  const cardContent = (
+    <Card className="group relative bg-card border border-border rounded-none hover:border-primary transition-all duration-300 overflow-hidden h-full">
+      {/* Acento superior al hacer hover */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
 
-        <CardContent className="p-8 h-full flex flex-col">
-          {/* Header de la tarjeta: Número e Icono */}
-          <div className="flex justify-between items-start mb-6">
-            <div className="flex h-14 w-14 items-center justify-center bg-secondary border border-border group-hover:bg-primary group-hover:text-black transition-colors duration-300">
-              <service.icon className="h-7 w-7" />
-            </div>
-            <span className="text-4xl font-black text-muted/20 group-hover:text-primary/20 transition-colors select-none">
-              {service.id}
-            </span>
+      <CardContent className="p-8 h-full flex flex-col">
+        {/* Header de la tarjeta: Número e Icono */}
+        <div className="flex justify-between items-start mb-6">
+          <div className="flex h-14 w-14 items-center justify-center bg-secondary border border-border group-hover:bg-primary group-hover:text-black transition-colors duration-300">
+            <service.icon className="h-7 w-7" />
           </div>
+          <span className="text-4xl font-black text-muted/20 group-hover:text-primary/20 transition-colors select-none">
+            {service.id}
+          </span>
+        </div>
 
-          {/* Contenido */}
-          <div className="flex-grow">
-            <h3 className="text-xl font-bold text-foreground uppercase tracking-wide mb-3 group-hover:text-primary transition-colors min-h-[3.5rem]">
-              {service.title}
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {service.description}
-            </p>
-          </div>
+        {/* Contenido */}
+        <div className="flex-grow">
+          <h3 className="text-xl font-bold text-foreground uppercase tracking-wide mb-3 group-hover:text-primary transition-colors min-h-[3.5rem]">
+            {service.title}
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {service.description}
+          </p>
+        </div>
 
-          {/* Footer de la tarjeta (Decorativo técnico) */}
+        {/* Footer de la tarjeta (Decorativo técnico) */}
+        {service.href && (
           <div className="mt-8 pt-4 border-t border-dashed border-border flex items-center justify-between text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors">
             <span>VER CATÁLOGO</span>
             <ArrowUpRight className="h-4 w-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </div>
-        </CardContent>
-      </Card>
-    </Link>
+        )}
+      </CardContent>
+    </Card>
+  )
+
+  if (service.href) {
+    return (
+      <Link href={service.href} className="w-full h-full block">
+        {cardContent}
+      </Link>
+    )
+  }
+
+  return (
+    <div className="w-full h-full block">
+      {cardContent}
+    </div>
   )
 }
 
@@ -116,7 +123,7 @@ export function ServicesSection() {
   const secondGroup = services.slice(4, 8)
 
   return (
-    <section id="servicios" className="py-24 bg-background scroll-mt-20 relative border-b border-border overflow-hidden">
+    <section id="servicios" className="py-24 bg-background scroll-mt-20 relative overflow-hidden">
       {/* --- FONDO DECORATIVO (Rueda gigante) --- */}
       <div className="absolute top-20 right-0 translate-x-1/4 opacity-[0.1] pointer-events-none z-0">
         <div className="relative w-[600px] h-[600px] lg:w-[800px] lg:h-[800px]">

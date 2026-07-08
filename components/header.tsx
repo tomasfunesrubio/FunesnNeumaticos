@@ -17,9 +17,7 @@ const navigation = [
       { name: "Precurado", href: "/precurado" },
       { name: "Retacado", href: "/retacado" },
       { name: "Vulcanizado", href: "/vulcanizado" },
-      { name: "Refuerzo Interno", href: "/refuerzo-interno" },
-      { name: "Recauchutaje", href: "/recauchutaje" },
-      { name: "Cubiertas Nuevas", href: "/cubiertas-nuevas" }
+      { name: "Refuerzo Interno", href: "/refuerzo-interno" }
     ]
   },
   {
@@ -42,24 +40,9 @@ const SOCIAL_LINKS = {
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openSubmenu, setOpenSubmenu] = useState(null)
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  // CAMBIO: Ahora manejamos el nombre del dropdown activo (string) en vez de boolean
   const [activeDropdown, setActiveDropdown] = useState(null)
-
-  // Ref para el contenedor de navegación (para detectar click afuera globalmente)
   const navRef = useRef(null)
-
   const pathname = usePathname()
-  const isHome = pathname === "/"
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   // Cerrar cualquier desplegable si se hace click fuera del menú de navegación
   useEffect(() => {
@@ -83,41 +66,22 @@ export function Header() {
     setActiveDropdown(activeDropdown === name ? null : name);
   }
 
-  const isTransparent = isHome && !isScrolled
-  const linkColorClass = isTransparent
-    ? "text-gray-200 hover:text-primary"
-    : "text-muted-foreground hover:text-primary";
-
-  const goldFilter = "brightness(0) saturate(100%) invert(74%) sepia(74%) saturate(542%) hue-rotate(358deg) brightness(85%) contrast(105%)"
+  const linkColorClass = "text-muted-foreground hover:text-primary";
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${!isTransparent
-      ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm py-3"
-      : "bg-transparent border-b border-white/10 py-5"
-      }`}>
+    <header className="sticky top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-sm py-3">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
 
         {/* --- LOGO --- */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 transition-transform active:scale-95">
             <div className="relative h-12 w-auto flex items-center">
-              {/* Logo Original (Mantiene el tamaño de la caja) */}
               <Image
                 src="/logo.png"
                 alt="Funes Neumáticos S.R.L."
                 width={180}
                 height={60}
-                className={`h-12 w-auto object-contain transition-opacity duration-500 ${isTransparent ? "opacity-0" : "opacity-100"}`}
-                priority
-              />
-              {/* Logo Dorado (Absoluto superpuesto) */}
-              <Image
-                src="/logo.png"
-                alt="Funes Neumáticos S.R.L. Dorado"
-                width={180}
-                height={60}
-                className={`absolute inset-0 h-12 w-auto object-contain transition-opacity duration-500 ${isTransparent ? "opacity-100" : "opacity-0"}`}
-                style={{ filter: goldFilter }}
+                className="h-12 w-auto object-contain"
                 priority
               />
             </div>
@@ -129,7 +93,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className={`rounded-none ${isTransparent ? "text-primary hover:bg-white/10" : "text-foreground"}`}
+            className="rounded-none text-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -202,7 +166,7 @@ export function Header() {
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-6">
-          <div className={`flex items-center gap-4 ${isTransparent ? "text-primary/80" : "text-muted-foreground"}`}>
+          <div className="flex items-center gap-4 text-muted-foreground">
             <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:scale-110 transition-all">
               <Facebook className="h-5 w-5" />
             </a>

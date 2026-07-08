@@ -7,24 +7,14 @@ import {
   Clock,
   MessageSquare,
   Headset,
-  Factory
+  Factory,
+  ArrowRight
 } from "lucide-react"
-import { ContactForm } from "@/components/contact-form"
+// import { ContactForm } from "@/components/contact-form"
+import { Button } from "@/components/ui/button"
 import { Metadata } from 'next'
 
-// Client Components for Animation (could be refactored to generic AnimatedGrid if we wanted perfect matching, 
-// but local small one-off motion wrappers are fine for this page to avoid over-abstraction)
-// I will reuse AnimatedGrid for the contact info cards.
 import { AnimatedGrid, AnimatedGridItem } from "@/components/animated-grid"
-
-// For the Hero, it assumes specific icons and layout, I'll use ServiceHero logic but adapt it or use ServiceHero 
-// with a custom BG? The design in contact is slightly specific (Headset icon in background).
-// To keep it simple and consistent: I will use a ServiceHero-like structure but inline since it has special decorations.
-// Wait, ServiceHero is flexible enough? It takes badgeIcon and text.
-// The "Headset" absolute SVG in background is unique. I can reimplement that easily or omit for consistency.
-// Let's implement the Hero as a Client Component specifically for Contact to keep the "Headset" effect.
-// OR: Create `ContactHero` component.
-
 import { ContactHero } from "@/components/contact-hero"
 
 export const metadata: Metadata = {
@@ -101,19 +91,110 @@ export default function ContactoPage() {
 
       <ContactHero />
 
-      {/* --- SECCIÓN PRINCIPAL: CONTACTO --- */}
-      <section className="py-24 bg-background relative">
+      {/* --- SECCIÓN PRINCIPAL: MEDIOS DE CONTACTO PRIORITARIOS --- */}
+      <section className="py-20 bg-background relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
 
-          {/* 1. INFORMACIÓN PLANTA CENTRAL */}
+          {/* --- CANALES DESTACADOS (WHATSAPP & EMAIL PRIMERO) --- */}
+          <div className="grid md:grid-cols-2 gap-8 mb-20">
+            {/* Tarjeta WhatsApp */}
+            <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 flex flex-col justify-between shadow-sm hover:border-[#25D366] transition-colors">
+              <div>
+                <div className="flex items-center gap-4 border-b border-zinc-100 pb-6 mb-6">
+                  <div className="h-14 w-14 bg-[#25D366] text-white flex items-center justify-center shrink-0">
+                    <MessageSquare className="h-7 w-7" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-[#25D366] uppercase tracking-widest block">Atención Rápida</span>
+                    <h3 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">WhatsApp Oficial</h3>
+                  </div>
+                </div>
+
+                <p className="text-zinc-600 text-base leading-relaxed mb-6">
+                  Comunicate directamente con un asesor para resolver consultas al instante, solicitar cotizaciones o coordinar turnos.
+                </p>
+
+                <ul className="space-y-3 mb-8 text-sm text-zinc-700 font-medium">
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 bg-[#25D366] rounded-full"></span>
+                    Presupuestos para reconstrucción de flotas
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 bg-[#25D366] rounded-full"></span>
+                    Consultas sobre stock de neumáticos nuevos
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 bg-[#25D366] rounded-full"></span>
+                    Turnos de alineado, balanceo y mecánica
+                  </li>
+                </ul>
+              </div>
+
+              <a
+                href="https://api.whatsapp.com/send?phone=5493854135265&text=Hola%21%20Me%20gustar%C3%ADa%20realizar%20una%20consulta"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full"
+              >
+                <Button className="w-full bg-[#25D366] text-black hover:bg-[#20bd5a] font-black uppercase tracking-wider h-14 rounded-none text-base transition-transform active:scale-[0.99] flex items-center justify-center gap-2">
+                  Iniciar Chat WhatsApp <ArrowRight className="h-5 w-5" />
+                </Button>
+              </a>
+            </div>
+
+            {/* Tarjeta Correo Electrónico */}
+            <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 flex flex-col justify-between shadow-sm hover:border-primary transition-colors">
+              <div>
+                <div className="flex items-center gap-4 border-b border-zinc-100 pb-6 mb-6">
+                  <div className="h-14 w-14 bg-zinc-900 text-primary flex items-center justify-center shrink-0">
+                    <Mail className="h-7 w-7" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest block">Área Comercial</span>
+                    <h3 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">Correo Electrónico</h3>
+                  </div>
+                </div>
+
+                <p className="text-zinc-600 text-base leading-relaxed mb-6">
+                  Canal corporativo indicado para envíos formales, licitaciones públicas y privadas o apertura de cuentas corrientes.
+                </p>
+
+                <ul className="space-y-3 mb-8 text-sm text-zinc-700 font-medium">
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 bg-zinc-900 rounded-full"></span>
+                    Recepción y envío de pliegos formales
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 bg-zinc-900 rounded-full"></span>
+                    Solicitud y gestión de cuentas corrientes
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 bg-zinc-900 rounded-full"></span>
+                    Consultas administrativas y facturación
+                  </li>
+                </ul>
+              </div>
+
+              <a
+                href="mailto:ventas@funesneumaticos.com"
+                className="block w-full"
+              >
+                <Button className="w-full bg-zinc-900 text-white hover:bg-zinc-800 font-black uppercase tracking-wider h-14 rounded-none text-base transition-transform active:scale-[0.99] flex items-center justify-center gap-2">
+                  Escribir por Email <ArrowRight className="h-5 w-5 text-primary" />
+                </Button>
+              </a>
+            </div>
+          </div>
+
+          {/* --- INFORMACIÓN PLANTA CENTRAL & TELÉFONOS --- */}
           <div className="w-full mb-16">
             <div className="border-b border-border pb-8 mb-10">
               <h3 className="text-3xl font-black text-foreground mb-4 uppercase flex items-center gap-3">
                 <Factory className="h-8 w-8 text-primary" />
-                Planta Central
+                Planta Central & Instalaciones
               </h3>
               <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
-                Nuestras instalaciones están operativas de Lunes a Sábados para recepción y despacho de flotas. Contactanos por cualquiera de nuestros canales oficiales.
+                Nuestras instalaciones industriales están operativas de Lunes a Sábados para la recepción y despacho de flotas pesadas y maquinaria agropecuaria.
               </p>
             </div>
 
@@ -154,16 +235,16 @@ export default function ContactoPage() {
             </AnimatedGrid>
           </div>
 
-          {/* 2. FORMULARIO */}
-          <div className="w-full">
+          {/* 2. FORMULARIO (OCULTADO HASTA TENER MAIL CONFIGURADO) */}
+          {/* <div className="w-full">
             <ContactForm />
-          </div>
+          </div> */}
 
         </div>
       </section>
 
-      {/* --- FAQ SECTION --- */}
-      <section className="py-24 bg-secondary/30 border-t border-border">
+      {/* --- FAQ SECTION (OCULTADA POR PEDIDO DEL USUARIO) --- */}
+      {/* <section className="py-24 bg-secondary/30 border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl font-black text-foreground uppercase tracking-tight sm:text-4xl">
@@ -205,7 +286,7 @@ export default function ContactoPage() {
             ))}
           </AnimatedGrid>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>

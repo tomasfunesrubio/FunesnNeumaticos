@@ -6,7 +6,7 @@ import { CheckCircle2, MapPin, MessageCircle } from "lucide-react"
 
 export function CTASection() {
   return (
-    <section className="py-24 bg-zinc-950 relative overflow-hidden border-t border-zinc-900">
+    <section className="py-24 bg-zinc-950 relative overflow-hidden">
       {/* Background Texture: Dotted Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
 

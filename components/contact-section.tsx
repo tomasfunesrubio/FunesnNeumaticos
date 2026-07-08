@@ -8,7 +8,7 @@ import {
 
 // Import Client Islands
 import { ContactMap } from "@/components/contact-map"
-import { HomeContactForm } from "@/components/home-contact-form"
+// import { HomeContactForm } from "@/components/home-contact-form"
 
 // Import Motion Wrapper for Server Component Parts (if needed, or use a simple shared client wrapper)
 // For the contact info cards, they were animated. I should create a client wrapper for the cards list OR keep them static for now.
@@ -149,7 +149,7 @@ export function ContactSection() {
         <ContactMap />
 
         {/* --- 2. FORMULARIO (Island) --- */}
-        <HomeContactForm />
+        {/* <HomeContactForm /> */}
 
       </div>
     </section>

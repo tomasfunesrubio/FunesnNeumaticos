@@ -37,7 +37,7 @@ export function AboutSection() {
   const goldFilter = "brightness(0) saturate(100%) invert(63%) sepia(85%) saturate(2333%) hue-rotate(1deg) brightness(93%) contrast(92%)";
 
   return (
-    <section id="nosotros" className="relative bg-secondary/10 scroll-mt-20 border-t border-zinc-900 overflow-hidden">
+    <section id="nosotros" className="relative bg-secondary/10 scroll-mt-20 overflow-hidden">
 
       {/* --- FONDO INDUSTRIAL DECORATIVO --- */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] z-0 pointer-events-none"></div>

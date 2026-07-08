@@ -1,232 +1,129 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
+import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Shield, Clock, Award, Star, MapPin } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
-const backgroundImages = [
-  "/hero/slide-1.webp",
-  "/hero/slide-2.webp",
-  "/hero/slide-3.webp",
-  "/hero/slide-4.webp"
+const slides = [
+  { 
+    id: 1, 
+    src: "/hero/Banner Funes.svg", 
+    alt: "Funes Neumáticos - Campaña 1"
+  },
+  { 
+    id: 2, 
+    src: "/hero/Banner Cuotas Funes.svg", 
+    alt: "Funes Neumáticos - Campaña Cuotas" 
+  },
+  { 
+    id: 3, 
+    src: "/hero/Banner Calidad Funes (1).svg", 
+    alt: "Funes Neumáticos - Campaña Calidad" 
+  },
+  { 
+    id: 4, 
+    src: "/hero/Banner Stock Funes.svg", 
+    alt: "Funes Neumáticos - Campaña Stock" 
+  },
+  { 
+    id: 5, 
+    src: "/hero/Banner Servicios Funes.svg", 
+    alt: "Funes Neumáticos - Campaña Servicios" 
+  }
 ]
-
-const stats = [
-  { label: "Trayectoria", value: "+20 Años", icon: Award },
-  { label: "Calidad", value: "ISO 9001", icon: Shield },
-  { label: "Servicio", value: "Integral", icon: Clock },
-]
-
-const goldFilter = "brightness(0) saturate(100%) invert(63%) sepia(85%) saturate(2333%) hue-rotate(1deg) brightness(93%) contrast(92%)";
 
 export function Hero() {
-  const [currentImage, setCurrentImage] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
-  const nextSlide = () => {
-    setCurrentImage((prev) => (prev + 1) % backgroundImages.length)
-  }
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }, [])
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide()
     }, 5000)
     return () => clearInterval(timer)
-  }, [])
+  }, [nextSlide])
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-black border-b border-white/10">
-
-      {/* --- Carrusel de Fondo --- */}
-      <div className="absolute inset-0 z-0">
-        {backgroundImages.map((src, index) => (
-          <div
-            key={src}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentImage ? "opacity-100" : "opacity-0"
-              }`}
-          >
-            <Image
-              src={src}
-              alt={`Funes Neumáticos – planta industrial slide ${index + 1}`}
-              fill
-              className="object-cover object-top"
-              // First image is the LCP element — preload it immediately
-              priority={index === 0}
-              fetchPriority={index === 0 ? "high" : "low"}
-              // Lazy-load non-visible slides to avoid wasting bandwidth
-              loading={index === 0 ? "eager" : "lazy"}
-              quality={85}
-              sizes="100vw"
-            />
-          </div>
-        ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent z-10" />
-      </div>
-
-      {/* --- Contenido Principal --- */}
-      <div className="relative z-20 mx-auto max-w-7xl px-6 w-full pt-48 pb-20 lg:pt-40 lg:pb-24 lg:px-8 flex flex-col lg:flex-row lg:items-center">
-        <div className="flex-1 max-w-3xl">
-
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <div className="h-1 w-12 bg-primary"></div>
-            <span className="text-primary font-bold tracking-[0.2em] text-sm uppercase font-mono">
-              // Ingeniería en Transporte
-            </span>
-          </motion.div>
-
-          {/* TÍTULO: EQUILIBRADO (Ni muy corto, ni muy largo) */}
-          {/* Ajusté el tamaño a text-7xl para que las 3-4 palabras entren perfectas */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="text-5xl font-black tracking-tight text-white sm:text-7xl mb-6 leading-[0.95] uppercase"
-          >
-            Precurado y <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-yellow-600">
-              Servicios Integrales
-            </span>
-          </motion.h1>
-
-          {/* Descripción */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            className="text-xl text-gray-300 leading-relaxed mb-10 max-w-xl border-l-4 border-primary pl-6 py-1"
-          >
-            Reconstrucción de neumáticos con tecnología premium y mecánica especializada para maximizar el rendimiento de tu flota.
-          </motion.p>
-
-          {/* Botones */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 mb-16"
-          >
-            <a
-              href="https://api.whatsapp.com/send?phone=5493854135265&text=Hola%21%20Quisiera%20cotizar%20un%20servicio."
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button size="lg" className="h-14 px-8 bg-primary text-primary-foreground hover:bg-primary/90 text-base font-bold tracking-wide rounded-none border-l-4 border-white/40 uppercase">
-                Cotizar Ahora
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </a>
-            <Link href="/productos">
-              <Button size="lg" variant="outline" className="h-14 px-8 border-white/20 text-white hover:bg-white/10 bg-black/20 backdrop-blur-sm rounded-none uppercase tracking-wide font-semibold">
-                Ver Catálogo
-              </Button>
-            </Link>
-          </motion.div>
-
-          {/* --- SPECS PANEL --- */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
-            className="w-[90%] bg-zinc-950/80 backdrop-blur-md border border-white/10 border-l-4 border-l-primary p-0 rounded-none"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
-              {stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col p-6 hover:bg-white/5 transition-colors cursor-default group">
-                  <div className="flex items-center gap-3 text-primary mb-2">
-                    <stat.icon className="h-5 w-5" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest font-mono text-gray-400 group-hover:text-primary transition-colors">
-                      {stat.label}
-                    </span>
-                  </div>
-                  <span className="text-2xl font-black text-white tracking-tight">
-                    {stat.value}
-                  </span>
-                </div>
-              ))}
+    <section className="relative w-full aspect-[16/10] sm:aspect-[16/7] md:aspect-[1200/400] overflow-hidden bg-black">
+      {/* Slides */}
+      {slides.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentSlide ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+          }`}
+        >
+          <Image
+            src={slide.src}
+            alt={slide.alt}
+            fill
+            className="object-contain md:object-cover object-center"
+            priority={index === 0}
+            fetchPriority={index === 0 ? "high" : "low"}
+            quality={90}
+            sizes="100vw"
+          />
+          
+          {/* Botón CTA opcional sobre la imagen */}
+          {slide.cta && (
+            <div className="absolute inset-0 z-20 pointer-events-none">
+              <a 
+                href={slide.cta.href} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                /* 
+                  AJUSTE DE POSICIÓN: 
+                  Cambié a right-[15%] en celulares y md:right-[25%] en PC 
+                  para moverlo más a la izquierda. 
+                */
+                className="absolute bottom-[25%] right-[15%] md:right-[25%] pointer-events-auto flex items-center gap-2 bg-black/80 border border-[#25D366] text-[#25D366] px-5 py-2.5 rounded-lg font-bold uppercase tracking-wider backdrop-blur-sm hover:bg-[#25D366] hover:text-black transition-all"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.633 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                </svg>
+                {slide.cta.text}
+              </a>
             </div>
-          </motion.div>
+          )}
         </div>
+      ))}
 
-        {/* --- VIPAL FLOATING CARD (Right Side) --- */}
-        <div className="w-full flex justify-center lg:block lg:flex-1 relative lg:h-full lg:min-h-[400px] pointer-events-none mt-12 lg:mt-0">
-          <div className="pointer-events-auto lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2">
+      {/* Controles: Flechas Laterales */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center text-white/50 hover:text-white transition-colors"
+        aria-label="Anterior"
+      >
+        <ChevronLeft className="w-8 h-8 md:w-12 md:h-12 drop-shadow-lg" />
+      </button>
 
-            {/* Card Container: Industrial Glass Effect */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{
-                opacity: 1,
-                x: 0,
-                y: [0, -10, 0] // Floating effect
-              }}
-              transition={{
-                opacity: { duration: 0.8, ease: "easeOut", delay: 1.0 },
-                x: { duration: 0.8, ease: "easeOut", delay: 1.0 },
-                y: {
-                  repeat: Infinity,
-                  duration: 6,
-                  ease: "easeInOut",
-                  delay: 1.0 // Start floating after entrance
-                }
-              }}
-            >
-              <div className="w-[280px] bg-zinc-950/40 backdrop-blur-xl border border-yellow-500/30 rounded-2xl p-5 shadow-[0_0_50px_-10px_rgba(234,179,8,0.2)] hover:scale-[1.02] transition-transform duration-500 group">
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center text-white/50 hover:text-white transition-colors"
+        aria-label="Siguiente"
+      >
+        <ChevronRight className="w-8 h-8 md:w-12 md:h-12 drop-shadow-lg" />
+      </button>
 
-                {/* Decorative Glow */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/10 blur-[60px] rounded-full pointer-events-none"></div>
-
-                {/* Header: Certification Badge */}
-                <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="bg-yellow-500/20 p-1.5 rounded-md">
-                      <Award className="h-4 w-4 text-yellow-500" />
-                    </div>
-                    <span className="text-[10px] font-bold text-yellow-500 tracking-[0.2em] uppercase">
-                      Certificado Oficial
-                    </span>
-                  </div>
-                </div>
-
-                {/* Main Content */}
-                <div className="space-y-1">
-                  <h3 className="text-2xl font-black text-white italic uppercase leading-none">
-                    Representante
-                  </h3>
-
-                  {/* Vipal Logo (Gold Filtered) */}
-                  <div className="relative h-14 w-40 my-3 opacity-90 group-hover:opacity-100 transition-opacity">
-                    <Image
-                      src="/vipal.png"
-                      alt="Vipal Logo"
-                      fill
-                      className="object-contain object-left"
-                      style={{ filter: goldFilter }}
-                    />
-                  </div>
-                </div>
-
-                {/* Footer: Location */}
-                <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-3">
-                  <div className="h-8 w-8 rounded-full bg-zinc-900 flex items-center justify-center border border-white/10">
-                    <MapPin className="h-4 w-4 text-zinc-400" />
-                  </div>
-                  <div>
-                    <p className="text-white font-bold text-sm">Santiago del Estero</p>
-                    <p className="text-zinc-500 text-[10px] uppercase">Planta Industrial La Banda</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+      {/* Indicadores Inferiores */}
+      <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2 md:gap-3">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-10 h-1.5 md:w-14 md:h-2 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "bg-primary" : "bg-white/40 hover:bg-white/70"
+            }`}
+            aria-label={`Ir a diapositiva ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   )
