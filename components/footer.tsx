@@ -43,11 +43,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/recauchutaje" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Recauchutaje
-                </Link>
-              </li>
-              <li>
                 <Link href="/vulcanizado" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Vulcanizado
                 </Link>
@@ -72,12 +67,6 @@ export function Footer() {
               <li>
                 <Link href="/tren-delantero" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Tren Delantero
-                </Link>
-              </li>
-              <li>
-                <Link href="/cubiertas-nuevas" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                  Cubiertas Nuevas
-                  <span className="bg-primary text-primary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase tracking-wider">New</span>
                 </Link>
               </li>
               <li>
