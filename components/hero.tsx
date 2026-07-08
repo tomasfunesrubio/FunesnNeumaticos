@@ -51,7 +51,7 @@ export function Hero() {
   }, [nextSlide])
 
   return (
-    <section className="relative w-full aspect-[16/10] sm:aspect-[16/7] md:aspect-[1200/400] overflow-hidden bg-black">
+    <section className="relative w-full aspect-[16/9] sm:aspect-[2/1] md:aspect-[1200/400] overflow-hidden bg-zinc-900">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -64,7 +64,7 @@ export function Hero() {
             src={slide.src}
             alt={slide.alt}
             fill
-            className="object-contain md:object-cover object-center"
+            className="object-cover object-center"
             priority={index === 0}
             fetchPriority={index === 0 ? "high" : "low"}
             quality={90}
