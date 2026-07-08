@@ -51,7 +51,7 @@ export function Hero() {
   }, [nextSlide])
 
   return (
-    <section className="relative w-full aspect-[16/9] sm:aspect-[2/1] md:aspect-[1200/400] overflow-hidden bg-zinc-900">
+    <section className="relative w-full h-[240px] sm:h-[320px] md:h-auto md:aspect-[1200/400] overflow-hidden bg-zinc-100">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -60,16 +60,35 @@ export function Hero() {
             index === currentSlide ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
           }`}
         >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            className="object-cover object-center"
-            priority={index === 0}
-            fetchPriority={index === 0 ? "high" : "low"}
-            quality={90}
-            sizes="100vw"
-          />
+          {/* VISTA MOBILE: Contenedor con scroll horizontal suave ("correr la imagen") sin fondo negro */}
+          <div className="md:hidden w-full h-full overflow-x-auto scrollbar-none flex items-center justify-start">
+            <div className="relative h-full aspect-[3/1] shrink-0">
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                className="object-cover"
+                priority={index === 0}
+                fetchPriority={index === 0 ? "high" : "low"}
+                quality={90}
+                sizes="100vw"
+              />
+            </div>
+          </div>
+
+          {/* VISTA DESKTOP: Banner panorámico 3:1 */}
+          <div className="hidden md:block absolute inset-0">
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className="object-cover object-center"
+              priority={index === 0}
+              fetchPriority={index === 0 ? "high" : "low"}
+              quality={90}
+              sizes="100vw"
+            />
+          </div>
           
           {/* Botón CTA opcional sobre la imagen */}
           {slide.cta && (
@@ -78,11 +97,6 @@ export function Hero() {
                 href={slide.cta.href} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                /* 
-                  AJUSTE DE POSICIÓN: 
-                  Cambié a right-[15%] en celulares y md:right-[25%] en PC 
-                  para moverlo más a la izquierda. 
-                */
                 className="absolute bottom-[25%] right-[15%] md:right-[25%] pointer-events-auto flex items-center gap-2 bg-black/80 border border-[#25D366] text-[#25D366] px-5 py-2.5 rounded-lg font-bold uppercase tracking-wider backdrop-blur-sm hover:bg-[#25D366] hover:text-black transition-all"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
