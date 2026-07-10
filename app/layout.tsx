@@ -10,7 +10,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://funesneumaticos.com'),
   title: {
-    default: 'Funes Neumáticos | Ingeniería en Transporte',
+    default: 'Funes Neumáticos | Venta de Neumáticos y Servicios de Reconstrucción',
     template: '%s | Funes Neumáticos',
   },
   description:
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_AR',
     siteName: 'Funes Neumáticos',
-    title: 'Funes Neumáticos | Ingeniería en Transporte',
+    title: 'Funes Neumáticos | Venta de Neumáticos y Servicios de Reconstrucción',
     description:
       'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas de transporte.',
     url: '/',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Funes Neumáticos | Ingeniería en Transporte',
+    title: 'Funes Neumáticos | Venta de Neumáticos y Servicios de Reconstrucción',
     description:
       'Representante Oficial VIPAL en Santiago del Estero. Soluciones integrales para flotas de transporte.',
     images: ['/icono.png'],

@@ -1,6 +1,6 @@
 "use client"
 
-import { PhoneCall, Mail } from "lucide-react"
+import { PhoneCall, Mail, ArrowUpRight } from "lucide-react"
 
 export function StatsSection() {
   return (
@@ -45,7 +45,13 @@ export function StatsSection() {
               <span className="text-black/30 hidden sm:inline">|</span>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-black/70 shrink-0" />
-                <span>ventas@funesneumaticos.com</span>
+                <a 
+                  href="mailto:ventas@funesneumaticos.com" 
+                  className="group inline-flex items-center gap-1 border-b border-black/30 hover:border-black hover:text-slate-900 pb-0.5 transition-all"
+                >
+                  <span>ventas@funesneumaticos.com</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-black/60 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+                </a>
               </div>
             </div>
 

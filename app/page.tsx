@@ -11,7 +11,7 @@ import { VipalSection } from "@/components/vipal-section"
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Funes Neumáticos | Reconstrucción y Servicios para Transporte",
+  title: "Funes Neumáticos | Venta de Neumáticos y Servicios de Reconstrucción",
   description:
     "Líderes en recapado de neumáticos, alineación y balanceo para flotas. Planta industrial en Santiago del Estero. Distribuidor oficial Vipal.",
   keywords: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Funes Neumáticos | Ingeniería en Transporte",
+    title: "Funes Neumáticos | Venta de Neumáticos y Servicios de Reconstrucción",
     description:
       "Maximiza el rendimiento de tu flota con nuestros servicios de reconstrucción y mecánica pesada.",
     url: "https://funesneumaticos.com",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Funes Neumáticos | Reconstrucción y Servicios para Transporte",
+    title: "Funes Neumáticos | Venta de Neumáticos y Servicios de Reconstrucción",
     description:
       "Líderes en recapado de neumáticos, alineación y balanceo para flotas en Santiago del Estero.",
     images: ["/icono.png"],
